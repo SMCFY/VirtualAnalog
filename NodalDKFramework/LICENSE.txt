@@ -1,0 +1,9 @@
+NodalDKFramework.
+
+ Copyright 2017, Jaromir Macak, jarda.macak@seznam.cz.
+ All Rights Reserved.
+ 
+ This software may be used by anyone for any non-commercional reason so
+ long as the copyright notice in the source files
+ remains intact.
+ For any commercial use, contact author of the software.
