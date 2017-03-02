@@ -5,6 +5,7 @@ classdef preampPlugin < audioPlugin
     end
     properties (Access=private)
         preamp
+        buf = [0,0];
     end
     properties (Constant)
         PluginInterface = audioPluginInterface(...
@@ -25,6 +26,7 @@ classdef preampPlugin < audioPlugin
         function Output = process(plugin, in)
             [sig, ~] = plugin.preamp.process(in*plugin.Gain);
             Output = sig*plugin.Out;
+            plugin.buf = [plugin.buf; Output];
             %Output = in*plugin.Out;
         end
         function reset(plugin)
