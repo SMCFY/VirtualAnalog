@@ -24,9 +24,15 @@ classdef preampPlugin < audioPlugin
             plugin.preamp = preampModel(plugin.getSampleRate);
         end
         function Output = process(plugin, in)
+            [m,n] = size(in);
             [sig, ~] = plugin.preamp.process(in*plugin.Gain);
             Output = sig*plugin.Out;
             plugin.buf = [plugin.buf; Output];
+            if size(plugin.buf,1) > m*10
+                figure
+                plot(plugin.buf)
+                pause
+            end
             %Output = in*plugin.Out;
         end
         function reset(plugin)
