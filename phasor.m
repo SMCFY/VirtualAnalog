@@ -1,4 +1,10 @@
 % Analog phasor described in DAFX
+% R < 1 is the radius of each pole in a complex-conjugate pole pair, and the pole angles are ±?. 
+% The pole angle ? ? (0, ? ) can be interpreted as ? = ?n T , 
+% where ?n is the desired notch frequency and T is the sampling interval. 
+% The pole radius R controls the width of the notch ? the closer it is to 1, 
+% the narrower the notch (and the more accurate is the tuning parameter ?).
+
 
 fs = 44100; %fs/2
 
