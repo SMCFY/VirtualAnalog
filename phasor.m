@@ -9,7 +9,7 @@
 fs = 44100; 
 [x,fs] = audioread('highpitchchords.wav');
 x = x(:,1);
-t = 44100*2; % length of sound in samples
+t = 44100*5; % length of sound in samples
 
 % noise
 %x = 2*rand(1,t);
@@ -23,8 +23,8 @@ if t > length(x)
     x = [x zeros(1,diff)];
 end
 
-R1 = 0.5;R2 = 0.9;R3 = 0.2;R4 = 0.8;
-theta1 = 440*2*pi; theta2 = 500*2*pi; theta3 = 800*2*pi; theta4 = 100*2*pi;
+R1 = 0.4;R2 = .1;R3 = .9;R4 = .61;
+theta1 = 440*2*pi/fs; theta2 = 500*2*pi/fs; theta3 = 800*2*pi/fs; theta4 = 100*2*pi/fs;
 
 a11 = -2*R1*cos(theta1);
 a21 = R1^2;
@@ -46,28 +46,28 @@ AP4 = [0, 0, 0];
 xn1 = 0;
 xn2 = 0;
 
-wet = 0.6;
+wet = 0.5;
 dry = 1-wet;
 
 for i = 1:t % t is the iterations
-    theta1 = 440*2*pi*(i)/fs;
-    if theta1 > pi
-        theta1 = theta1 - pi;
+    theta1 = (1*2*pi/fs)*i;
+    if theta1 > 2*pi
+        theta1 = theta1 - 2*pi;
     end
     
-    theta2 = 240*2*pi*(i)/fs;
-    if theta2 > pi
-        theta2 = theta2 - pi;
+    theta2 = (3*2*pi/fs)*i;
+    if theta2 > 2*pi
+        theta2 = theta2 - 2*pi;
     end
     
-    theta3 = 140*2*pi*(i)/fs;
-    if theta3 > pi
-        theta3 = theta3 - pi;
+    theta3 = (2*2*pi/fs)*i;
+    if theta3 > 2*pi
+        theta3 = theta3 - 2*pi;
     end
     
-    theta4 = 840*2*pi*(i)/fs;
-    if theta4 > pi
-        theta4 = theta4 - pi;
+    theta4 =(5*2*pi/fs)*i;
+    if theta4 > 2*pi
+        theta4 = theta4 - 2*pi;
     end
     
     a11 = -2*R1*cos(theta1);
