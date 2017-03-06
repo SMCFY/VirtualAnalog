@@ -23,8 +23,6 @@ obj.nodes = zeros(2,2);
     obj.nodes(1,:) = nodes__(1:2);
     % outputs
     obj.nodes(2,1) = nodes__(3);
-    
-    
     obj.name(1:l) = name__(1:l);
     obj.value = value__;
     obj.type = 'opa';
