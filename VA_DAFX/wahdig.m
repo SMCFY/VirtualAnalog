@@ -1,8 +1,14 @@
-function [g,fr,Q] = wahcontrols(wah)
-% function [g,fr,Q] = wahcontrols(wah)
+% wahdig.m
 % Authors: Välimäki, Bilbao, Smith, Abel, Pakarinen, Berners
+% A = wahdig(fr,Q,fs)
+% 
+% Parameters:
+% fr = resonance frequency (Hz)
+% Q  = resonance quality factor
+% fs = sampling frequency (Hz)
 %
-% Parameter: wah = wah-pedal-angle normalized to lie between 0 and 1
+% Returned:
+% A = [1 a1 a2] = digital filter transfer-function denominator poly
 %
 %--------------------------------------------------------------------------
 % This source code is provided without any warranties as published in 
@@ -11,6 +17,9 @@ function [g,fr,Q] = wahcontrols(wah)
 % for commercial applications without further permission.
 %--------------------------------------------------------------------------
 
-g  = 0.1*4^wah;       % overall gain for second-order s-plane transfer funct.
-fr = 450*2^(2.3*wah); % resonance frequency (Hz) for the same transfer funct.
-Q  = 2^(2*(1-wah)+1); % resonance quality factor for the same transfer funct.
+
+frn = fr/fs;
+R = 1 - PI*frn/Q; % pole radius
+theta = 2*PI*frn; % pole angle
+a1 = -2.0*R*cos(theta); % biquad coeff
+a2 = R*R;               % biquad coeff
