@@ -28,7 +28,7 @@ classdef preampModel < DKmodel
     methods
         function obj = preampModel(fs)
            obj.T = 1/fs;
-           obj.maxIter = 8;
+           %obj.maxIter = 8;
            obj.nonlin_model = obj.components_def(13).model;
            obj = buildModel(obj, obj.components_def,obj.components_count);
         end
