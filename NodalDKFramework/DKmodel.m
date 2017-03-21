@@ -151,15 +151,23 @@ classdef DKmodel
         end
         
         function [v, I] = solve_nonlinear_func(obj, p, K)
+            % setting the amount of iterations for Newton-Raphson pr sample
             iter = obj.maxIter;
+            % voltage approximation
             v0 = obj.v;
             v = v0 + 2*obj.eps;
+            % while the iter is bigger than 0 or abs(v-v0) is bigger than
+            % epsilon (close to zero)
             while(iter > 0 || any(abs(v-v0) > obj.eps))
                 [it, Jt] = nonlinearity(obj,v);
+                % from thesis, 0 = p * Ki(v[n]) -v[n] and Yeh eq. (40)
                 e = p + K*it - v;
+                % The Jacobian of the residual function 
                 J = K*Jt - eye(length(v));
+                % The following equation is then solved repeated until, the device terminal voltages at time, converge
                 v = v0 - J\e;
                 v0 = v;
+                % subtract one from iteration
                 iter = iter-1;
             end
             I = nonlinearity(obj,v);
@@ -170,12 +178,18 @@ classdef DKmodel
             if(isempty(obj.K))
                 x1 = (eye(N)-obj.A)\(obj.B*obj.U);
             else
+                % first estimate of K, p and v, not sure where is
+                % estimations stems from.
                 Kss = obj.K + obj.G/(eye(N)-obj.A)*obj.C;
                 pss = (obj.G/(eye(N)-obj.A)*obj.B+obj.H) * obj.U;
                 obj.v = pss;
+                % find the voltage v and the nonlinear matrix I
                 [obj.v, I] = solve_nonlinear_func(obj,pss, Kss);
+                % no previous input, so the input is replaced by eye(N)
                 x1 = (eye(N)-obj.A)\(obj.B*obj.U + obj.C*I);
             end
+            % x is staged with the same output x1 from the nonlinear
+            % function
             obj.x = [x1 x1];
         end
         
