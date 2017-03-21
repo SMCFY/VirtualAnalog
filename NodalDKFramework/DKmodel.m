@@ -45,14 +45,14 @@ classdef DKmodel
                         end
                     else
                         if(isempty(obj.x))
-                            % calculata p vectpr
+                            % calculate p vector
                             p = obj.H*obj.U;
                             % find the currents
                             [obj.v, I] = solve_nonlinear_func(obj,p, obj.K);
                             % output sample
                             outsample = (obj.E*obj.U + obj.F*I);
                         else
-                            % calculata p vectpr
+                            % calculate p vector
                             p = obj.G*obj.x(:,channel) + obj.H*obj.U;
                             % find the currents
                             [obj.v, I] = solve_nonlinear_func(obj,p, obj.K);
