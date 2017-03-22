@@ -351,13 +351,13 @@ classdef DKmodel
                         Nn(numNonlinearComponents,components(i).nodes(1,2)) = -1;
                     end
                      % plate to cathode
-                    numNonlinearComponents = numNonlinearComponents+1;
-                    if(components(i).nodes(2,1) > 0)
-                        Nn(numNonlinearComponents,components(i).nodes(2,1)) = 1;
-                    end
-                    if(components(i).nodes(2,2) > 0)
-                        Nn(numNonlinearComponents,components(i).nodes(2,2)) = -1;
-                    end
+%                     numNonlinearComponents = numNonlinearComponents+1;
+%                     if(components(i).nodes(2,1) > 0)
+%                         Nn(numNonlinearComponents,components(i).nodes(2,1)) = 1;
+%                     end
+%                     if(components(i).nodes(2,2) > 0)
+%                         Nn(numNonlinearComponents,components(i).nodes(2,2)) = -1;
+%                     end
                   
                     %       elseif(strcmp(components(i).type, 'ptd')) % this is pentode
                     %          % grid to cathode
