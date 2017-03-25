@@ -1,5 +1,5 @@
 %----------------------WDF Class------------------------
-classdef WDF < hgsetget % the WDF element superclass
+classdef WDF < matlab.mixin.SetGet % the WDF element superclass
     properties 
         PortRes % the WDF port resistance
     end
