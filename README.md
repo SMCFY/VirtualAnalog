@@ -4,6 +4,7 @@ By [Jonas Holfelt](https://github.com/jholfelt), [Sohejl Zabetian](https://githu
 
 ## Tools and inspiration
 [NodalDKFramework](https://github.com/jardamacak/NodalDKFramework) by [Jaromir Macak](https://github.com/jardamacak)
+
 [RT-WDF library](https://github.com/RT-WDF/rt-wdf_lib) from [DAFx-16 paper](https://github.com/RT-WDF/rt-wdf_lib/tree/master/Documentation/40-DAFx-16_paper_35-PN.pdf).
 
 ## Dependencies
