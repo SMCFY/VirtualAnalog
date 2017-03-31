@@ -13,20 +13,20 @@
   <MAINGROUP id="xHwrJf" name="TonestackPlugin">
     <GROUP id="{F1D2FA4B-49EC-FA1F-DA81-0E2A47E0355C}" name="Source">
       <GROUP id="{FCD87672-6636-B825-4B59-DDFC554A6079}" name="rt-wdf">
-        <FILE id="DVOPwM" name="rt-wdf.cpp" compile="1" resource="0" file="../rt-wdf_lib/Libs/rt-wdf/rt-wdf.cpp"/>
-        <FILE id="X85YaC" name="rt-wdf.h" compile="0" resource="0" file="../rt-wdf_lib/Libs/rt-wdf/rt-wdf.h"/>
-        <FILE id="l9isHL" name="rt-wdf_nlModels.cpp" compile="1" resource="0"
-              file="../rt-wdf_lib/Libs/rt-wdf/rt-wdf_nlModels.cpp"/>
-        <FILE id="WOZfUS" name="rt-wdf_nlModels.h" compile="0" resource="0"
-              file="../rt-wdf_lib/Libs/rt-wdf/rt-wdf_nlModels.h"/>
-        <FILE id="mRiRsv" name="rt-wdf_nlSolvers.cpp" compile="1" resource="0"
-              file="../rt-wdf_lib/Libs/rt-wdf/rt-wdf_nlSolvers.cpp"/>
-        <FILE id="LSS3vq" name="rt-wdf_nlSolvers.h" compile="0" resource="0"
-              file="../rt-wdf_lib/Libs/rt-wdf/rt-wdf_nlSolvers.h"/>
-        <FILE id="XQmAUj" name="rt-wdf_types.h" compile="0" resource="0" file="../rt-wdf_lib/Libs/rt-wdf/rt-wdf_types.h"/>
+        <FILE id="bRtPzk" name="rt-wdf.cpp" compile="1" resource="0" file="Source/rt-wdf/rt-wdf.cpp"/>
+        <FILE id="pz213V" name="rt-wdf.h" compile="0" resource="0" file="Source/rt-wdf/rt-wdf.h"/>
+        <FILE id="spC8ne" name="rt-wdf_nlModels.cpp" compile="1" resource="0"
+              file="Source/rt-wdf/rt-wdf_nlModels.cpp"/>
+        <FILE id="ALqAF6" name="rt-wdf_nlModels.h" compile="0" resource="0"
+              file="Source/rt-wdf/rt-wdf_nlModels.h"/>
+        <FILE id="tsVoAF" name="rt-wdf_nlSolvers.cpp" compile="1" resource="0"
+              file="Source/rt-wdf/rt-wdf_nlSolvers.cpp"/>
+        <FILE id="qcaI7j" name="rt-wdf_nlSolvers.h" compile="0" resource="0"
+              file="Source/rt-wdf/rt-wdf_nlSolvers.h"/>
+        <FILE id="fZf8Mw" name="rt-wdf_types.h" compile="0" resource="0" file="Source/rt-wdf/rt-wdf_types.h"/>
       </GROUP>
-      <FILE id="QGW3zb" name="wdfTonestackTree.hpp" compile="0" resource="0"
-            file="../rt-wdf_renderer/Circuits/wdfTonestackTree.hpp"/>
+      <FILE id="tBUqyI" name="wdfTonestackTree.hpp" compile="0" resource="0"
+            file="Source/wdfTonestackTree.hpp"/>
       <FILE id="drmJRK" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="hlgWdC" name="PluginProcessor.h" compile="0" resource="0"
@@ -63,26 +63,26 @@
         <MODULEPATH id="juce_audio_plugin_client" path="../../modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile" externalLibraries="armadillo&#10;blas&#10;lapack">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="TonestackPlugin"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="TonestackPlugin"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_core" path="../../modules"/>
-        <MODULEPATH id="juce_events" path="../../modules"/>
-        <MODULEPATH id="juce_graphics" path="../../modules"/>
-        <MODULEPATH id="juce_data_structures" path="../../modules"/>
-        <MODULEPATH id="juce_gui_basics" path="../../modules"/>
-        <MODULEPATH id="juce_gui_extra" path="../../modules"/>
-        <MODULEPATH id="juce_cryptography" path="../../modules"/>
-        <MODULEPATH id="juce_video" path="../../modules"/>
-        <MODULEPATH id="juce_opengl" path="../../modules"/>
-        <MODULEPATH id="juce_audio_basics" path="../../modules"/>
-        <MODULEPATH id="juce_audio_devices" path="../../modules"/>
-        <MODULEPATH id="juce_audio_formats" path="../../modules"/>
-        <MODULEPATH id="juce_audio_processors" path="../../modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="../../modules"/>
+        <MODULEPATH id="juce_core" path="../../../../modules"/>
+        <MODULEPATH id="juce_events" path="../../../../modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../../modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../../../modules"/>
+        <MODULEPATH id="juce_video" path="../../../../modules"/>
+        <MODULEPATH id="juce_opengl" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../../../modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
   </EXPORTFORMATS>
