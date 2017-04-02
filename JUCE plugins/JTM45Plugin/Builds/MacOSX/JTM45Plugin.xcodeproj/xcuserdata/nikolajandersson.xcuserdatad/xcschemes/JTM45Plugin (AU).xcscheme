@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5C5137ED752C1717FFB80431"
-               BuildableName = "JJTM45Plugin.component"
+               BuildableName = "JTM45Plugin.component"
                BlueprintName = "JTM45Plugin (AU)"
                ReferencedContainer = "container:JTM45Plugin.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5C5137ED752C1717FFB80431"
-            BuildableName = "JJTM45Plugin.component"
+            BuildableName = "JTM45Plugin.component"
             BlueprintName = "JTM45Plugin (AU)"
             ReferencedContainer = "container:JTM45Plugin.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5C5137ED752C1717FFB80431"
-            BuildableName = "JJTM45Plugin.component"
+            BuildableName = "JTM45Plugin.component"
             BlueprintName = "JTM45Plugin (AU)"
             ReferencedContainer = "container:JTM45Plugin.xcodeproj">
          </BuildableReference>

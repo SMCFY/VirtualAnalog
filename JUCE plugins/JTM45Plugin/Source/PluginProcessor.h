@@ -13,7 +13,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "wdfJTM45Tree.hpp"
-
+#include "../Libs/r8brain-free-src/CDSPResampler.h"
 //==============================================================================
 /**
 */
@@ -60,6 +60,21 @@ private:
     wdfJTM45Tree JTM45;
     AudioParameterFloat* gain;
     AudioParameterFloat* volume;
+
+
+    // sample conversion things 
+    r8b::CDSPResampler24* upSmplr24 = NULL;
+    r8b::CDSPResampler24* downSmplr24 = NULL;
+    
+    double* upBuf = NULL;
+    double* downBuf = NULL;
+    
+    int blockSize;
+    double outputSampleRate;
+    double inputSampleRate;
+    double treeSampleRate;
+    double outputBitDepth;
+    double oversamplingRatio;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Jtm45pluginAudioProcessor)
 };

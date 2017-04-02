@@ -92,8 +92,22 @@ void Jtm45pluginAudioProcessor::prepareToPlay (double sampleRate, int samplesPer
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
     JTM45.initTree();
-    JTM45.wdfTree::setSamplerate(sampleRate);
     JTM45.adaptTree();
+    
+    upSmplr24 = new r8b::CDSPResampler24(sampleRate, JTM45.wdfTree::getSamplerate(), samplesPerBlock); //BS TODO
+    downSmplr24 = new r8b::CDSPResampler24(JTM45.wdfTree::getSamplerate(), sampleRate, samplesPerBlock); //BS TODO
+    
+    inputSampleRate = sampleRate;
+    outputSampleRate = sampleRate;
+    
+    oversamplingRatio = JTM45.wdfTree::getSamplerate() / sampleRate;
+    
+    size_t downBufSize = ceil(oversamplingRatio*samplesPerBlock);
+    
+    upBuf = new double[samplesPerBlock]; //BS TODO
+    downBuf = new double[downBufSize]; //BS TODO
+    
+//    JTM45.wdfTree::setSamplerate(sampleRate);
 }
 
 void Jtm45pluginAudioProcessor::releaseResources()
@@ -138,6 +152,48 @@ void Jtm45pluginAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
     JTM45.setParam(0, *volume);
     JTM45.setParam(1, *gain);
     
+     // input
+    for (int sample = 0; sample < buffer.getNumSamples(); sample++)
+    {
+        upBuf[sample] = (double) buffer.getSample(0, sample);
+        upBuf[sample] += (double) buffer.getSample(1, sample);
+        upBuf[sample] /= 2;
+    }
+    
+    double* upDataPtr;
+    
+     
+    int numUpSamples = upSmplr24->process(upBuf, buffer.getNumSamples(), upDataPtr);
+    
+    // WDF
+    for (int sample = 0; sample < numUpSamples; sample++)
+    {
+        float inVoltage = upDataPtr[sample];
+        
+        JTM45.setInputValue(inVoltage);
+        JTM45.cycleWave();
+        downBuf[sample] = { (float)(JTM45.getOutputValue()) };
+    }
+    
+    
+    double* downDataPtr;
+    
+    int numDownSamples = downSmplr24->process(downBuf, numUpSamples, downDataPtr);
+    float outVoltage = 0;
+    
+    float* left = buffer.getWritePointer (0);
+    float* right = buffer.getWritePointer (1);
+    
+    // output
+    for (int sample = 0; sample < numDownSamples; sample++)
+    {
+        outVoltage = { (float)(downDataPtr[sample]) };
+        
+        left[sample] = outVoltage;
+        right[sample] = outVoltage;
+    }
+    
+    /*
     float* left = buffer.getWritePointer (0);
     float* right = buffer.getWritePointer (1);
     for (int i = 0; i < buffer.getNumSamples(); i++){
@@ -147,6 +203,7 @@ void Jtm45pluginAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
         left[i] = JTM45.getOutputValue();
         right[i] = JTM45.getOutputValue();
     }
+     */
 }
 
 //==============================================================================

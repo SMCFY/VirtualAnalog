@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2C18F6D9951066D5B2020787"
-               BuildableName = "libJJTM45Plugin.a"
+               BuildableName = "libJTM45Plugin.a"
                BlueprintName = "JTM45Plugin (Shared Code)"
                ReferencedContainer = "container:JTM45Plugin.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2C18F6D9951066D5B2020787"
-            BuildableName = "libJJTM45Plugin.a"
+            BuildableName = "libJTM45Plugin.a"
             BlueprintName = "JTM45Plugin (Shared Code)"
             ReferencedContainer = "container:JTM45Plugin.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2C18F6D9951066D5B2020787"
-            BuildableName = "libJJTM45Plugin.a"
+            BuildableName = "libJTM45Plugin.a"
             BlueprintName = "JTM45Plugin (Shared Code)"
             ReferencedContainer = "container:JTM45Plugin.xcodeproj">
          </BuildableReference>

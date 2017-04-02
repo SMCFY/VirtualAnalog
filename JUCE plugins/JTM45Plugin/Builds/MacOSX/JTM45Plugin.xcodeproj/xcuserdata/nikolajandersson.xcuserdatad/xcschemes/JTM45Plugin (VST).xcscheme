@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "21E35607E552DB26D00B33F5"
-               BuildableName = "JJTM45Plugin.vst"
+               BuildableName = "JTM45Plugin.vst"
                BlueprintName = "JTM45Plugin (VST)"
                ReferencedContainer = "container:JTM45Plugin.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "21E35607E552DB26D00B33F5"
-            BuildableName = "JJTM45Plugin.vst"
+            BuildableName = "JTM45Plugin.vst"
             BlueprintName = "JTM45Plugin (VST)"
             ReferencedContainer = "container:JTM45Plugin.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "21E35607E552DB26D00B33F5"
-            BuildableName = "JJTM45Plugin.vst"
+            BuildableName = "JTM45Plugin.vst"
             BlueprintName = "JTM45Plugin (VST)"
             ReferencedContainer = "container:JTM45Plugin.xcodeproj">
          </BuildableReference>

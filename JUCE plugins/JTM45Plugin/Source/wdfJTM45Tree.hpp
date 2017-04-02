@@ -27,7 +27,7 @@
 */
 
 #pragma once
-#include "rt-wdf/rt-wdf.h"
+#include "../Libs/rt-wdf/rt-wdf.h"
 
 using namespace arma;
 
@@ -107,7 +107,7 @@ public:
 	wdfJTM45Tree() {
 
 		setSamplerate(176400);
-        
+
         paramData inputGain;
         inputGain.name = "Input Gain";
         inputGain.ID = 1;

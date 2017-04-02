@@ -11,21 +11,41 @@
               pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="4.3.1">
   <MAINGROUP id="IN5X4y" name="JTM45Plugin">
     <GROUP id="{A19E387B-4610-5D3E-CF96-C7D9507B46C8}" name="Source">
+      <GROUP id="{8EE9C84D-86C2-CF16-9954-F8D516583B69}" name="Libs">
+        <GROUP id="{CFC61098-D676-936C-8D4C-71056AB27872}" name="r8brain-free-src">
+          <FILE id="u9xcmq" name="CDSPBlockConvolver.h" compile="0" resource="0"
+                file="Libs/r8brain-free-src/CDSPBlockConvolver.h"/>
+          <FILE id="Au0MF5" name="CDSPFIRFilter.h" compile="0" resource="0" file="Libs/r8brain-free-src/CDSPFIRFilter.h"/>
+          <FILE id="VnfqLx" name="CDSPFracInterpolator.h" compile="0" resource="0"
+                file="Libs/r8brain-free-src/CDSPFracInterpolator.h"/>
+          <FILE id="XU1qnT" name="CDSPProcessor.h" compile="0" resource="0" file="Libs/r8brain-free-src/CDSPProcessor.h"/>
+          <FILE id="k9BS9X" name="CDSPRealFFT.h" compile="0" resource="0" file="Libs/r8brain-free-src/CDSPRealFFT.h"/>
+          <FILE id="eoviMS" name="CDSPResampler.h" compile="0" resource="0" file="Libs/r8brain-free-src/CDSPResampler.h"/>
+          <FILE id="HsQEvE" name="CDSPSincFilterGen.h" compile="0" resource="0"
+                file="Libs/r8brain-free-src/CDSPSincFilterGen.h"/>
+          <FILE id="S5m9Wf" name="fft4g.h" compile="0" resource="0" file="Libs/r8brain-free-src/fft4g.h"/>
+          <FILE id="JYvMpo" name="r8bbase.cpp" compile="1" resource="0" file="Libs/r8brain-free-src/r8bbase.cpp"/>
+          <FILE id="LM7ogp" name="r8bbase.h" compile="0" resource="0" file="Libs/r8brain-free-src/r8bbase.h"/>
+          <FILE id="qncB9j" name="r8bconf.h" compile="0" resource="0" file="Libs/r8brain-free-src/r8bconf.h"/>
+          <FILE id="tOQ9kq" name="r8butil.h" compile="0" resource="0" file="Libs/r8brain-free-src/r8butil.h"/>
+          <FILE id="f6gHTH" name="README.md" compile="0" resource="1" file="Libs/r8brain-free-src/README.md"/>
+        </GROUP>
+        <GROUP id="{C34CF5C3-1563-3343-F288-C3CA0AA3E40B}" name="rt-wdf">
+          <FILE id="lrZlne" name="rt-wdf.cpp" compile="1" resource="0" file="Libs/rt-wdf/rt-wdf.cpp"/>
+          <FILE id="SxY4ei" name="rt-wdf.h" compile="0" resource="0" file="Libs/rt-wdf/rt-wdf.h"/>
+          <FILE id="XGiRU1" name="rt-wdf_nlModels.cpp" compile="1" resource="0"
+                file="Libs/rt-wdf/rt-wdf_nlModels.cpp"/>
+          <FILE id="IJvbUY" name="rt-wdf_nlModels.h" compile="0" resource="0"
+                file="Libs/rt-wdf/rt-wdf_nlModels.h"/>
+          <FILE id="mnbbTW" name="rt-wdf_nlSolvers.cpp" compile="1" resource="0"
+                file="Libs/rt-wdf/rt-wdf_nlSolvers.cpp"/>
+          <FILE id="iZeF29" name="rt-wdf_nlSolvers.h" compile="0" resource="0"
+                file="Libs/rt-wdf/rt-wdf_nlSolvers.h"/>
+          <FILE id="wGrBD3" name="rt-wdf_types.h" compile="0" resource="0" file="Libs/rt-wdf/rt-wdf_types.h"/>
+        </GROUP>
+      </GROUP>
       <FILE id="m8JcNT" name="wdfJTM45Tree.hpp" compile="0" resource="0"
             file="Source/wdfJTM45Tree.hpp"/>
-      <GROUP id="{50BB6388-3989-83DD-D31E-4346809B0FB2}" name="rt-wdf">
-        <FILE id="OS1a0P" name="rt-wdf.cpp" compile="1" resource="0" file="Source/rt-wdf/rt-wdf.cpp"/>
-        <FILE id="Skb1yR" name="rt-wdf.h" compile="0" resource="0" file="Source/rt-wdf/rt-wdf.h"/>
-        <FILE id="tPkrwv" name="rt-wdf_nlModels.cpp" compile="1" resource="0"
-              file="Source/rt-wdf/rt-wdf_nlModels.cpp"/>
-        <FILE id="uLiv7D" name="rt-wdf_nlModels.h" compile="0" resource="0"
-              file="Source/rt-wdf/rt-wdf_nlModels.h"/>
-        <FILE id="KnTG6r" name="rt-wdf_nlSolvers.cpp" compile="1" resource="0"
-              file="Source/rt-wdf/rt-wdf_nlSolvers.cpp"/>
-        <FILE id="PjTfVE" name="rt-wdf_nlSolvers.h" compile="0" resource="0"
-              file="Source/rt-wdf/rt-wdf_nlSolvers.h"/>
-        <FILE id="HrCRGU" name="rt-wdf_types.h" compile="0" resource="0" file="Source/rt-wdf/rt-wdf_types.h"/>
-      </GROUP>
       <FILE id="HaQPDT" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="X0cnHz" name="PluginProcessor.h" compile="0" resource="0"
@@ -39,10 +59,10 @@
     <XCODE_MAC targetFolder="Builds/MacOSX" extraCompilerFlags="-ffast-math&#10;-msse2&#10;-march=native"
                externalLibraries="armadillo&#10;blas&#10;lapack">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="JJTM45Plugin"
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="JTM45Plugin"
                        headerPath="/usr/local/Cellar/armadillo/7.800.2/include&#10;"
                        libraryPath="/usr/local/lib"/>
-        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="JJTM45Plugin"
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="JTM45Plugin"
                        libraryPath="/usr/local/lib" headerPath="/usr/local/Cellar/armadillo/7.800.2/include&#10;"/>
       </CONFIGURATIONS>
       <MODULEPATHS>

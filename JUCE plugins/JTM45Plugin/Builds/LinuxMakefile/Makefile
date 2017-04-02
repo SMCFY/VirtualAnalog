@@ -64,11 +64,13 @@ ifeq ($(CONFIG),Release)
 endif
 
 OBJECTS := \
-  $(JUCE_OBJDIR)/rt-wdf_6d184130.o \
-  $(JUCE_OBJDIR)/rt-wdf_nlModels_feac9241.o \
-  $(JUCE_OBJDIR)/rt-wdf_nlSolvers_6c0cef93.o \
+  $(JUCE_OBJDIR)/r8bbase_cc90b634.o \
+  $(JUCE_OBJDIR)/rt-wdf_d0d260e3.o \
+  $(JUCE_OBJDIR)/rt-wdf_nlModels_e03f6bee.o \
+  $(JUCE_OBJDIR)/rt-wdf_nlSolvers_bcd54b86.o \
   $(JUCE_OBJDIR)/PluginProcessor_a059e380.o \
   $(JUCE_OBJDIR)/PluginEditor_94d4fb09.o \
+  $(JUCE_OBJDIR)/BinaryData_ce4232d4.o \
   $(JUCE_OBJDIR)/juce_audio_basics_6b797ca1.o \
   $(JUCE_OBJDIR)/juce_audio_devices_a742c38b.o \
   $(JUCE_OBJDIR)/juce_audio_formats_5a29c68a.o \
@@ -106,17 +108,22 @@ strip:
 	@echo Stripping JTM45Plugin
 	-@$(STRIP) --strip-unneeded $(JUCE_OUTDIR)/$(TARGET)
 
-$(JUCE_OBJDIR)/rt-wdf_6d184130.o: ../../Source/rt-wdf/rt-wdf.cpp
+$(JUCE_OBJDIR)/r8bbase_cc90b634.o: ../../Libs/r8brain-free-src/r8bbase.cpp
+	-@mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling r8bbase.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/rt-wdf_d0d260e3.o: ../../Libs/rt-wdf/rt-wdf.cpp
 	-@mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling rt-wdf.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/rt-wdf_nlModels_feac9241.o: ../../Source/rt-wdf/rt-wdf_nlModels.cpp
+$(JUCE_OBJDIR)/rt-wdf_nlModels_e03f6bee.o: ../../Libs/rt-wdf/rt-wdf_nlModels.cpp
 	-@mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling rt-wdf_nlModels.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/rt-wdf_nlSolvers_6c0cef93.o: ../../Source/rt-wdf/rt-wdf_nlSolvers.cpp
+$(JUCE_OBJDIR)/rt-wdf_nlSolvers_bcd54b86.o: ../../Libs/rt-wdf/rt-wdf_nlSolvers.cpp
 	-@mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling rt-wdf_nlSolvers.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
@@ -129,6 +136,11 @@ $(JUCE_OBJDIR)/PluginProcessor_a059e380.o: ../../Source/PluginProcessor.cpp
 $(JUCE_OBJDIR)/PluginEditor_94d4fb09.o: ../../Source/PluginEditor.cpp
 	-@mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling PluginEditor.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/BinaryData_ce4232d4.o: ../../JuceLibraryCode/BinaryData.cpp
+	-@mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling BinaryData.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/juce_audio_basics_6b797ca1.o: ../../JuceLibraryCode/juce_audio_basics.cpp
