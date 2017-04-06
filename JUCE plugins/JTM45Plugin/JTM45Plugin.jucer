@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="s3LZCx" name="JTM45Plugin" projectType="audioplug" version="1.0.0"
+              bundleIdentifier="com.yourcompany.JJTM45Plugin" includeBinaryInAppConfig="1"
+              buildVST="1" buildVST3="0" buildAU="1" buildAUv3="0" buildRTAS="0"
+              buildAAX="0" pluginName="JJTM45Plugin" pluginDesc="JJTM45Plugin"
+              pluginManufacturer="yourcompany" pluginManufacturerCode="Manu"
+              pluginCode="S3lz" pluginChannelConfigs="" pluginIsSynth="0" pluginWantsMidiIn="0"
+              pluginProducesMidiOut="0" pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0"
+              pluginAUExportPrefix="JJTM45PluginAU" pluginRTASCategory="" aaxIdentifier="com.yourcompany.JJTM45Plugin"
+              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="4.3.1">
+  <MAINGROUP id="IN5X4y" name="JTM45Plugin">
+    <GROUP id="{A19E387B-4610-5D3E-CF96-C7D9507B46C8}" name="Source">
+      <GROUP id="{8EE9C84D-86C2-CF16-9954-F8D516583B69}" name="Libs">
+        <GROUP id="{CFC61098-D676-936C-8D4C-71056AB27872}" name="r8brain-free-src">
+          <FILE id="u9xcmq" name="CDSPBlockConvolver.h" compile="0" resource="0"
+                file="Libs/r8brain-free-src/CDSPBlockConvolver.h"/>
+          <FILE id="Au0MF5" name="CDSPFIRFilter.h" compile="0" resource="0" file="Libs/r8brain-free-src/CDSPFIRFilter.h"/>
+          <FILE id="VnfqLx" name="CDSPFracInterpolator.h" compile="0" resource="0"
+                file="Libs/r8brain-free-src/CDSPFracInterpolator.h"/>
+          <FILE id="XU1qnT" name="CDSPProcessor.h" compile="0" resource="0" file="Libs/r8brain-free-src/CDSPProcessor.h"/>
+          <FILE id="k9BS9X" name="CDSPRealFFT.h" compile="0" resource="0" file="Libs/r8brain-free-src/CDSPRealFFT.h"/>
+          <FILE id="eoviMS" name="CDSPResampler.h" compile="0" resource="0" file="Libs/r8brain-free-src/CDSPResampler.h"/>
+          <FILE id="HsQEvE" name="CDSPSincFilterGen.h" compile="0" resource="0"
+                file="Libs/r8brain-free-src/CDSPSincFilterGen.h"/>
+          <FILE id="S5m9Wf" name="fft4g.h" compile="0" resource="0" file="Libs/r8brain-free-src/fft4g.h"/>
+          <FILE id="JYvMpo" name="r8bbase.cpp" compile="1" resource="0" file="Libs/r8brain-free-src/r8bbase.cpp"/>
+          <FILE id="LM7ogp" name="r8bbase.h" compile="0" resource="0" file="Libs/r8brain-free-src/r8bbase.h"/>
+          <FILE id="qncB9j" name="r8bconf.h" compile="0" resource="0" file="Libs/r8brain-free-src/r8bconf.h"/>
+          <FILE id="tOQ9kq" name="r8butil.h" compile="0" resource="0" file="Libs/r8brain-free-src/r8butil.h"/>
+          <FILE id="f6gHTH" name="README.md" compile="0" resource="1" file="Libs/r8brain-free-src/README.md"/>
+        </GROUP>
+        <GROUP id="{C34CF5C3-1563-3343-F288-C3CA0AA3E40B}" name="rt-wdf">
+          <FILE id="lrZlne" name="rt-wdf.cpp" compile="1" resource="0" file="Libs/rt-wdf/rt-wdf.cpp"/>
+          <FILE id="SxY4ei" name="rt-wdf.h" compile="0" resource="0" file="Libs/rt-wdf/rt-wdf.h"/>
+          <FILE id="XGiRU1" name="rt-wdf_nlModels.cpp" compile="1" resource="0"
+                file="Libs/rt-wdf/rt-wdf_nlModels.cpp"/>
+          <FILE id="IJvbUY" name="rt-wdf_nlModels.h" compile="0" resource="0"
+                file="Libs/rt-wdf/rt-wdf_nlModels.h"/>
+          <FILE id="mnbbTW" name="rt-wdf_nlSolvers.cpp" compile="1" resource="0"
+                file="Libs/rt-wdf/rt-wdf_nlSolvers.cpp"/>
+          <FILE id="iZeF29" name="rt-wdf_nlSolvers.h" compile="0" resource="0"
+                file="Libs/rt-wdf/rt-wdf_nlSolvers.h"/>
+          <FILE id="wGrBD3" name="rt-wdf_types.h" compile="0" resource="0" file="Libs/rt-wdf/rt-wdf_types.h"/>
+        </GROUP>
+      </GROUP>
+      <FILE id="m8JcNT" name="wdfJTM45Tree.hpp" compile="0" resource="0"
+            file="Source/wdfJTM45Tree.hpp"/>
+      <FILE id="HaQPDT" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="X0cnHz" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="HWRUZd" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="CL8EFC" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" extraCompilerFlags="-ffast-math&#10;-msse2&#10;-march=native"
+               externalLibraries="armadillo&#10;blas&#10;lapack">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="JTM45Plugin"
+                       headerPath="/usr/local/Cellar/armadillo/7.800.2/include&#10;"
+                       libraryPath="/usr/local/lib"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="JTM45Plugin"
+                       libraryPath="/usr/local/lib" headerPath="/usr/local/Cellar/armadillo/7.800.2/include&#10;"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../modules"/>
+        <MODULEPATH id="juce_events" path="../../modules"/>
+        <MODULEPATH id="juce_graphics" path="../../modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../modules"/>
+        <MODULEPATH id="juce_video" path="../../modules"/>
+        <MODULEPATH id="juce_opengl" path="../../modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="JJTM45Plugin"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="JJTM45Plugin"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../modules"/>
+        <MODULEPATH id="juce_events" path="../../modules"/>
+        <MODULEPATH id="juce_graphics" path="../../modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../modules"/>
+        <MODULEPATH id="juce_video" path="../../modules"/>
+        <MODULEPATH id="juce_opengl" path="../../modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../modules"/>
+      </MODULEPATHS>
+    </LINUX_MAKE>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
+</JUCERPROJECT>

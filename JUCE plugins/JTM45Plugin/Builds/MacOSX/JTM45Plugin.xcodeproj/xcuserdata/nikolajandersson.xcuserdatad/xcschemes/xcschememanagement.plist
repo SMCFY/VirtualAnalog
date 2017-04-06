@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>JTM45Plugin (AU).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>JTM45Plugin (All).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>JTM45Plugin (Shared Code).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>JTM45Plugin (VST).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>21E35607E552DB26D00B33F5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2C18F6D9951066D5B2020787</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5C5137ED752C1717FFB80431</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2DF8D7125BEA2BCDFF51ACB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
