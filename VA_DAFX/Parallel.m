@@ -12,7 +12,7 @@ classdef Parallel < Adaptor % the class for series 3-port adaptors
             obj.KidRight = KidRight; % connect the right 'child'
             obj.G2 = 1/KidLeft.PortRes; % G2 is the inverse port resistance from kidleft 
             obj.G3 = 1/KidRight.PortRes; % G3 is the inverse port resistance from kidright 
-            obj.PortRes = obj.G2+obj.G3; % parallel adapt. port facing the root
+            obj.PortRes = (KidLeft.PortRes * KidRight.PortRes)/(KidLeft.PortRes + KidRight.PortRes);% obj.G2+obj.G3; % parallel adapt. port facing the root
         end;
         function WU = WaveUp(obj) % the up-going wave at the adapted port
             % A2 is the waveup(kidleft) and A3 is the waveup(kidright)
@@ -22,10 +22,15 @@ classdef Parallel < Adaptor % the class for series 3-port adaptors
         function set.WD(obj,WaveFromParent) %  sets the down-going wave
             obj.WD = WaveFromParent; % set the down-going wave for the adaptor
             % set the waves to the 'children' according to the scattering rules
-            set(obj.KidLeft,'WD',obj.KidLeft.WU-(obj.KidLeft.PortRes/...
-            obj.PortRes)*(WaveFromParent+obj.KidLeft.WU+obj.KidRight.WU)); 
-            set(obj.KidRight,'WD',obj.KidRight.WU-(obj.KidRight.PortRes/...
-            obj.PortRes)*(WaveFromParent+obj.KidLeft.WU+obj.KidRight.WU));
+            
+            lrG = obj.G2 + obj.G3;
+            lrW = WaveFromParent + obj.KidLeft.WU + obj.KidRight.WU;
+            
+            left = obj.KidLeft.WU - (obj.G2/lrG) * lrW;
+            right = obj.KidRight.WU - (obj.G3/lrG) * lrW;
+                        
+            set(obj.KidLeft,'WD',left); 
+            set(obj.KidRight,'WD',right);
         end;
     end 
 end

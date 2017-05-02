@@ -19,6 +19,7 @@ classdef ser < Adaptor % the class for series 3-port adaptors
             % set the waves to the 'children' according to the scattering rules
             set(obj.KidLeft,'WD',obj.KidLeft.WU-(obj.KidLeft.PortRes/...
             obj.PortRes)*(WaveFromParent+obj.KidLeft.WU+obj.KidRight.WU)); 
+        
             set(obj.KidRight,'WD',obj.KidRight.WU-(obj.KidRight.PortRes/...
             obj.PortRes)*(WaveFromParent+obj.KidLeft.WU+obj.KidRight.WU));
         end;
