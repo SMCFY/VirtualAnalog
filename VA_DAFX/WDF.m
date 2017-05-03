@@ -7,8 +7,5 @@ classdef WDF < handle % the WDF element superclass
             function Volts = Voltage(obj)  % the voltage (V) over a WDF element
                 Volts = (obj.WU+obj.WD)/2; % as defined in the WDF literature
             end
-%             function setWD(obj, wd)
-%                 obj.WD = wd;
-%             end
     end
 end

@@ -1,5 +1,5 @@
 %----------------------Parallel Class------------------------
-classdef Parallel < Adaptor % the class for series 3-port adaptors
+classdef Parallel < Adaptor % the class for parallel 3-port adaptors
     properties
         WD % this is the down-going wave at the adapted port
         WU % this is the up-going wave at the adapted port
