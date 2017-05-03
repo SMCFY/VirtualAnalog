@@ -1,5 +1,5 @@
 %----------------------WDF Class------------------------
-classdef WDF < matlab.mixin.SetGet % the WDF element superclass
+classdef WDF < handle % the WDF element superclass
     properties 
         PortRes % the WDF port resistance
     end
@@ -7,5 +7,8 @@ classdef WDF < matlab.mixin.SetGet % the WDF element superclass
             function Volts = Voltage(obj)  % the voltage (V) over a WDF element
                 Volts = (obj.WU+obj.WD)/2; % as defined in the WDF literature
             end
-    end;
+%             function setWD(obj, wd)
+%                 obj.WD = wd;
+%             end
+    end
 end
