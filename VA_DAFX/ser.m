@@ -17,11 +17,16 @@ classdef ser < Adaptor % the class for series 3-port adaptors
         function set.WD(obj,WaveFromParent) %  sets the down-going wave
             obj.WD = WaveFromParent; % set the down-going wave for the adaptor
             % set the waves to the 'children' according to the scattering rules
-            set(obj.KidLeft,'WD',obj.KidLeft.WU-(obj.KidLeft.PortRes/...
-            obj.PortRes)*(WaveFromParent+obj.KidLeft.WU+obj.KidRight.WU)); 
-        
-            set(obj.KidRight,'WD',obj.KidRight.WU-(obj.KidRight.PortRes/...
-            obj.PortRes)*(WaveFromParent+obj.KidLeft.WU+obj.KidRight.WU));
+            
+            left = obj.KidLeft.WU-(obj.KidLeft.PortRes/...
+            obj.PortRes)*(WaveFromParent+obj.KidLeft.WU+obj.KidRight.WU);
+            
+            set(obj.KidLeft,'WD',left); 
+            
+            right = obj.KidRight.WU-(obj.KidRight.PortRes/...
+            obj.PortRes)*(WaveFromParent+obj.KidLeft.WU+obj.KidRight.WU);
+            
+            set(obj.KidRight,'WD',right);
         end;
     end 
 end
