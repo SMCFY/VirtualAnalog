@@ -34,7 +34,7 @@ classdef ser < Adaptor % the class for series 3-port adaptors
             if side == 'r'
                 obj.KidRight.updatePortRes(PortRes); 
             end
-            obj = ser(obj.KidLeft,obj.KidRight);
+            %obj = ser(obj.KidLeft,obj.KidRight);
         end
         function adapt(obj)
             if isa(obj.KidLeft, 'ser')
@@ -51,10 +51,10 @@ classdef ser < Adaptor % the class for series 3-port adaptors
             end
             
             if isa(obj, 'ser')
-                obj = ser(obj.KidLeft, obj.KidRight);
+                obj.PortRes = obj.KidLeft.PortRes+obj.KidRight.PortRes;
             end
             if isa(obj, 'Parallel')
-                obj = Parallel(obj.KidLeft, obj.KidRight);
+                obj.PortRes = (obj.KidLeft.PortRes * obj.KidRight.PortRes)/(obj.KidLeft.PortRes + obj.KidRight.PortRes); % obj.G2+obj.G3; % parallel adapt. port facing the root
             end
         end
     end

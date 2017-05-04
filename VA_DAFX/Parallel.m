@@ -34,7 +34,7 @@ classdef Parallel < Adaptor % the class for parallel 3-port adaptors
         end
         function adapt(obj)
             if isa(obj.KidLeft, 'ser')
-                adapt(obj.KidLeft)    
+                adapt(obj.KidLeft)
             end
             if isa(obj.KidRight, 'ser')
                 adapt(obj.KidRight)
@@ -47,10 +47,10 @@ classdef Parallel < Adaptor % the class for parallel 3-port adaptors
             end
             
             if isa(obj, 'ser')
-                obj = ser(obj.KidLeft, obj.KidRight);
+                obj.PortRes = obj.KidLeft.PortRes+obj.KidRight.PortRes;
             end
             if isa(obj, 'Parallel')
-                obj = Parallel(obj.KidLeft, obj.KidRight);
+                obj.PortRes = (obj.KidLeft.PortRes * obj.KidRight.PortRes)/(obj,KidLeft.PortRes + obj.KidRight.PortRes);% obj.G2+obj.G3; % parallel adapt. port facing the root
             end
         end
     end
