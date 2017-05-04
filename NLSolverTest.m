@@ -7,7 +7,7 @@ x0 = 0.5; % initial guess
 x = x0;
 iter = 1;
 b = [];
-while (iter < 100)
+while (iter < 10)
     b(iter) = x;
     fx = cos(x) - x^3;
     fprime = -sin(x) - 3*x^2;
@@ -17,10 +17,31 @@ while (iter < 100)
     iter = iter + 1;
 end
 
-scatter(1:100-1,b)
+plot(1:10-1,b)
+%%
+% Implementation from WDF++
+x0 = 0.5; % initial guess
+x = x0;
+iter = 1;
+
+dx = 1e-6;
+b2 = [];
+maxIter = 10;
+while (iter < maxIter)
+    b2(iter) = x;
+    f = cos(x) - x^3;
+    df = cos(x+dx) - (x+dx)^3;
+    newX = x - (dx*f)/(df - f);
+    x = newX;
+    
+    iter = iter + 1;
+end
+
+plot(1:maxIter-1,b2)
+
 
 %%  
-% Newton Raphson from wdf++
+% Newton Raphson from wiki 
 % cos x = x^3
 % f(x) = 2*Is*sinh(x/Vt)
 % f'(x) = (2*Is*cosh(x/Vt))/Vt
@@ -43,7 +64,7 @@ end
 plot(1:100-1,b)
 
 %% 
-% Newton Raphson 
+% Newton Raphson from wdf++
 % cos x = x^3
 % f(x) = 2*Is*sinh(x/Vt)
 % f'(x) = (2*Is*cosh(x/Vt))/Vt
@@ -53,10 +74,10 @@ Is = 2.52e-9;
 Vt = 45.3e-3;
 iter = 1;
 a = 1.5;
-Rp = 5000;
+Rp = 500;
 dx = 1e-6;
 b2 = [];
-maxIter = 10000;
+maxIter = 1000000;
 while (iter < maxIter)
     b2(iter) = b;
     f = 2*Is*sinh((a - b)/(2*Vt)) - (a-b)/(2*Rp) ;
