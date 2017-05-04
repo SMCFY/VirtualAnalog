@@ -1,10 +1,11 @@
-%----------------------Parallel Class------------------------
-classdef Parallel < Adaptor % the class for parallel 3-port adaptors
+%----------------------Parallel Switch Class------------------------
+classdef ParallelSwitch < Adaptor % the class for parallel 3-port adaptors
     properties
         WD = 0;% this is the down-going wave at the adapted port
         WU = 0;% this is the up-going wave at the adapted port
         G2
         G3
+        state = 0;
     end
     methods
         function obj = Parallel(KidLeft,KidRight) % constructor function
@@ -16,21 +17,38 @@ classdef Parallel < Adaptor % the class for parallel 3-port adaptors
         end
         function WU = WaveUp(obj) % the up-going wave at the adapted port
             % A2 is the waveup(kidleft) and A3 is the waveup(kidright)
-            WU = obj.G2/(obj.G2 + obj.G3)*WaveUp(obj.KidLeft) + obj.G3/(obj.G2+obj.G3)*WaveUp(obj.KidRight);% wave up
-            obj.WU = WU;
+            if obj.state == 1
+                WU = obj.G2/(obj.G2 + obj.G3)*WaveUp(obj.KidLeft) + obj.G3/(obj.G2+obj.G3)*WaveUp(obj.KidRight);% wave up
+                obj.WU = WU;
+            else
+                obj.WU = 0;
+            end
         end
         function setWD(obj,WaveFromParent) %  sets the down-going wave
-            obj.WD = WaveFromParent; % set the down-going wave for the adaptor
-            % set the waves to the 'children' according to the scattering rules
-            
-            lrG = obj.G2 + obj.G3;
-            lrW = WaveFromParent + obj.KidLeft.WU + obj.KidRight.WU;
-            
-            left = obj.KidLeft.WU - (obj.G2/lrG) * lrW;
-            right = obj.KidRight.WU - (obj.G3/lrG) * lrW;
-            
-            setWD(obj.KidLeft, left);
-            setWD(obj.KidRight, right);
+            if obj.state == 1
+                obj.WD = WaveFromParent; % set the down-going wave for the adaptor
+                % set the waves to the 'children' according to the scattering rules
+                
+                lrG = obj.G2 + obj.G3;
+                lrW = WaveFromParent + obj.KidLeft.WU + obj.KidRight.WU;
+                
+                left = obj.KidLeft.WU - (obj.G2/lrG) * lrW;
+                right = obj.KidRight.WU - (obj.G3/lrG) * lrW;
+                
+                setWD(obj.KidLeft, left);
+                setWD(obj.KidRight, right);
+            else
+                obj.WD = 0;
+                setWD(obj.KidLeft, 0);
+                setWD(obj.KidRight,0);
+            end
+        end
+        function changeState(obj) % always make the state the opposite of what it was
+            if obj.state == 1
+                obj.state = 0;
+            else
+                obj.state = 1;
+            end
         end
         function adapt(obj)
             if isa(obj.KidLeft, 'ser')

@@ -68,20 +68,20 @@ plot(1:100-1,b)
 % cos x = x^3
 % f(x) = 2*Is*sinh(x/Vt)
 % f'(x) = (2*Is*cosh(x/Vt))/Vt
-x0 = 1; % initial guess
+x0 = 0; % initial guess
 b = x0;
 Is = 2.52e-9;
 Vt = 45.3e-3;
 iter = 1;
-a = 1.5;
+a = 0.5;
 Rp = 500;
 dx = 1e-6;
 b2 = [];
-maxIter = 1000000;
+maxIter = 10000;
 while (iter < maxIter)
     b2(iter) = b;
-    f = 2*Is*sinh((a - b)/(2*Vt)) - (a-b)/(2*Rp) ;
-    df = 2*Is*sinh((a - (b+dx))/2*Vt) - (a-(b+dx))/(2*Rp);
+    f = 2*Is*sinh((a + b)/(2*Vt)) - (a-b)/(2*Rp) ;
+    df = 2*Is*sinh((a + (b+dx))/2*Vt) - (a-(b+dx))/(2*Rp);
     %df = 2*Is*sinh((x+dx)/Vt);
     newB = b - (dx*f)/(df - f);
     b = newB;
