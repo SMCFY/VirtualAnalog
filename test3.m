@@ -23,12 +23,14 @@ Vdiode = 0; % initial value for the voltage over the diode
 
 Is = 2.52e-9;
 Vt = 45.3e-3;
-Rp = s1.PortRes*C1.PortRes/(s1.PortRes+C1.PortRes);
-maxIter = 1000;
+Rp = (s1.PortRes*C1.PortRes)/(s1.PortRes+C1.PortRes);
+maxIter = 100;
 dx = 1e-6;
-b = 1; %initial guess
+b2 = [];
+b = 0; %initial guess
 %% The simulation loop:
 for n = 1:N % run each time sample until N
+    n
     V1.E = input(n); % read the input signal for the voltage source
     WaveUp(s1); % get the waves up to the root
     %Rdiode = 125.56*exp(-0.036*Vdiode); % the nonlinear resist. of the diode
@@ -37,8 +39,8 @@ for n = 1:N % run each time sample until N
     %r = (Rdiode-s1.PortRes)/(Rdiode+s1.PortRes); % update scattering coeff.
     iter = 1;
     while (iter < maxIter)
-        f = 2*Is*sinh((Vdiode - b)/(2*Vt)) - (Vdiode-b)/(2*Rp);
-        df = 2*Is*sinh((Vdiode - (b+dx))/2*Vt) - (Vdiode-(b+dx))/(2*Rp);
+        f = 2*Is*sinh((Vdiode)/(2*Vt)) - (Vdiode-2*b)/(2*Rp);
+        df = 2*Is*sinh((Vdiode)/(2*Vt)) - (Vdiode-(2*b+dx))/(2*Rp);
         newB = b - (dx*f)/(df - f);
         b = newB;
         iter = iter + 1;
