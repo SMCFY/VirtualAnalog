@@ -27,5 +27,14 @@ classdef ser < Adaptor % the class for series 3-port adaptors
             setWD(obj.KidLeft,left);
             setWD(obj.KidRight,right);
         end
+        function updatePortRes(obj, PortRes, side)
+            if side == 'l'
+                updatePortRes(obj.KidLeft, PortRes); 
+            end
+            if side == 'r'
+                obj.KidRight.updatePortRes(PortRes); 
+            end
+            obj = ser(obj.KidLeft,obj.KidRight);
+        end
     end
 end
