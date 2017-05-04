@@ -11,5 +11,8 @@ classdef OnePort < WDF % superclass for all WDF one-port elements
                 obj.State = val; % update internal state
             end
         end
+        function updatePortRes(obj, PortRes)
+            obj.PortRes = PortRes;
+        end
     end
 end
