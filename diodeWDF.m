@@ -63,7 +63,7 @@ classdef diodeWDF < audioPlugin
                 WaveUp(obj.s1); % get the waves up to the root
                 Rdiode = 125.56*exp(-0.036*obj.Vdiode); % the nonlinear resist. of the diode
                 r = (Rdiode-obj.s1.PortRes)/(Rdiode+obj.s1.PortRes); % update scattering coeff.
-                obj.s1.WD = r*obj.s1.WU; % evaluate the wave leaving the diode (root element)
+                setWD(obj.s1, r*obj.s1.WU); % evaluate the wave leaving the diode (root element)
                 obj.Vdiode = (obj.s1.WD+obj.s1.WU)/2; % update the diode voltage for next time sample
                 output(n,:) = Voltage(obj.R1); % the output is the voltage over the resistor R1
             end

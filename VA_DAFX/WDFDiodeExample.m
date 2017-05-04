@@ -27,7 +27,7 @@ for n = 1:N % run each time sample until N
     WaveUp(s1); % get the waves up to the root
     Rdiode = 125.56*exp(-0.036*Vdiode); % the nonlinear resist. of the diode
     r = (Rdiode-s1.PortRes)/(Rdiode+s1.PortRes); % update scattering coeff.
-    s1.WD = r*s1.WU; % evaluate the wave leaving the diode (root element)
+    setWD(s1, r*s1.WU); % evaluate the wave leaving the diode (root element)
     Vdiode = (s1.WD+s1.WU)/2; % update the diode voltage for next time sample
     output(n) = Voltage(R1); % the output is the voltage over the resistor R1
 end; 
