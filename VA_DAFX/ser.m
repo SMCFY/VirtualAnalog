@@ -36,5 +36,26 @@ classdef ser < Adaptor % the class for series 3-port adaptors
             end
             obj = ser(obj.KidLeft,obj.KidRight);
         end
+        function adapt(obj)
+            if isa(obj.KidLeft, 'ser')
+                adapt(obj.KidLeft)    
+            end
+            if isa(obj.KidRight, 'ser')
+                adapt(obj.KidRight)
+            end
+            if isa(obj.KidLeft, 'Parallel')
+                adapt(obj.KidLeft)
+            end
+            if isa(obj.KidRight, 'Parallel')
+                adapt(obj.KidRight)
+            end
+            
+            if isa(obj, 'ser')
+                obj = ser(obj.KidLeft, obj.KidRight);
+            end
+            if isa(obj, 'Parallel')
+                obj = Parallel(obj.KidLeft, obj.KidRight);
+            end
+        end
     end
 end

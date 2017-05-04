@@ -32,8 +32,19 @@ for n = 1:N % run each time sample until N
     setWD(s1, r*s1.WU); % evaluate the wave leaving the diode (root element)
     Vdiode = (s1.WD+s1.WU)/2; % update the diode voltage for next time sample
     output(n) = Voltage(R1); % the output is the voltage over the resistor R1
-    res = CapVal - 1;
-    updatePortRes(s1.KidRight, res, 'l')
+    
+    
+    CapVal = CapVal + 3.5e-5;
+    
+    % akward interface 
+    % s1 -> KidRight(ser) -> KidLeft.PortRes (capacitor's PortRes)
+    s1.KidRight.KidLeft.PortRes = 1/(2*CapVal*Fs); 
+    res = res - 0.001;
+    
+    % same here, just the other kid
+    s1.KidRight.KidRight.PortRes = res; 
+    adapt(s1);
+    % updatePortRes(s1.KidRight, res, 'l')
 end; 
 %% Plot the results
 t = (1:length(input))./Fs; % create a time vector for the figure
