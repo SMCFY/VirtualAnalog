@@ -20,6 +20,7 @@ res = 80;
 R1 = R(80); % create an 80Ohm resistor
 CapVal = 3.5e-5; % the capacitance value in Farads
 C1 = C(1/(2*CapVal*Fs)); % create the capacitance
+
 s1 =  ser(V1,ser(C1,R1)); % create WDF tree as a ser. conn. of V1,C1, and R1
 Vdiode = 0; % initial value for the voltage over the diode
 %% The simulation loop:

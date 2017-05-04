@@ -91,3 +91,25 @@ end
 
 plot(1:maxIter-1,b2)
 
+%%
+% Implementation from WDF++
+% Antiparallel diode equation added
+x0 = 0.5; % initial guess
+x = x0;
+iter = 1;
+
+dx = 1e-6;
+b2 = [];
+maxIter = 10;
+%eq = 2*Is*sinh(Vdiode+b)/(2*Vt)-(Vdiode-b)/(Rp); Antiparallel equation
+while (iter < maxIter)
+    b2(iter) = x;
+    f = 2*Is*sinh(Vdiode+b)/(2*Vt)-(Vdiode-b)/(Rp);
+    df = 2*Is*sinh(Vdiode+b+dx)/(2*Vt)-(Vdiode-b+dx)/(Rp);
+    newX = x - (dx*f)/(df - f);
+    x = newX;
+    
+    iter = iter + 1;
+end
+
+plot(1:maxIter-1,b2)
