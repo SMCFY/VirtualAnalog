@@ -21,7 +21,7 @@ for i=1:len
     WaveUp(P2); % get the waves up to the root
     setWD(NLR, P2.WU);
     setWD(P2,NLR.WD); 
-    output(n) = Voltage(R1);
+    output(i) = Voltage(C1);
 
 end
 %%
