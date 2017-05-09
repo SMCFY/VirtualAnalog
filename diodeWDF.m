@@ -34,7 +34,7 @@ classdef diodeWDF < audioPlugin
             
             %obj.gain = 30; % input signal gain parameter
             
-            obj.V1 = Voltage(0,1); % create a source with 0 (initial) voltage and 1 Ohm ser. res.
+            obj.V1 = VoltageSource(0,1); % create a source with 0 (initial) voltage and 1 Ohm ser. res.
             obj.R1 = Resistor(80); % create an 80Ohm resistor
             CapVal = 3.5e-5; % the capacitance value in Farads
             obj.C1 = Capacitor(1/(2*CapVal*obj.pSR)); % create the capacitance
