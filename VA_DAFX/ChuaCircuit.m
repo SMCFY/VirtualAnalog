@@ -14,9 +14,9 @@ C1 = Capacitor(1/(2*C1val*fs));
 P2 = Parallel(S1, C1);
 NLR = NLResistor(569.2);
 output = zeros(len,1);
-L1.State = 1;
-C1.State = 1;
-C4.State = 1;
+% L1.State = 1;
+% C1.State = 1;
+% C4.State = 1;
 for i=1:len
     WaveUp(P2); % get the waves up to the root
     %P2.WU

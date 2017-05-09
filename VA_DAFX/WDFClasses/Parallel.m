@@ -16,7 +16,7 @@ classdef Parallel < Adaptor % the class for parallel 3-port adaptors
         end
         function WU = WaveUp(obj) % the up-going wave at the adapted port
             % A2 is the waveup(kidleft) and A3 is the waveup(kidright)
-            WU = obj.G2/(obj.G2 + obj.G3)*WaveUp(obj.KidLeft) + obj.G3/(obj.G2+obj.G3)*WaveUp(obj.KidRight);% wave up
+            WU = (obj.G2/(obj.G2 + obj.G3))*WaveUp(obj.KidLeft) + (obj.G3/(obj.G2+obj.G3)*WaveUp(obj.KidRight));% wave up
             obj.WU = WU;
         end
         function setWD(obj,WaveFromParent) %  sets the down-going wave
