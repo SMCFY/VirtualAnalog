@@ -1,11 +1,11 @@
-%----------------------Ser Class------------------------
-classdef ser < Adaptor % the class for series 3-port adaptors
+%----------------------Series Class------------------------
+classdef Series < Adaptor % the class for series 3-port adaptors
     properties
         WD = 0; % this is the down-going wave at the adapted port
         WU = 0; % this is the up-going wave at the adapted port
     end
     methods
-        function obj = ser(KidLeft,KidRight) % constructor function
+        function obj = Series(KidLeft,KidRight) % constructor function
             obj.KidLeft = KidLeft; % connect the left 'child'
             obj.KidRight = KidRight; % connect the right 'child'
             obj.PortRes = KidLeft.PortRes+KidRight.PortRes; % adapt. port

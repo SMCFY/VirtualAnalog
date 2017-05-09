@@ -1,10 +1,10 @@
-%----------------------V Class------------------------
-classdef V < OnePort % class for the WDF voltage source (and ser. res.)
+%----------------------Voltage Class------------------------
+classdef Voltage < OnePort % class for the WDF voltage source (and ser. res.)
     properties
         E % this is the source voltage
     end
     methods
-        function obj = V(E,PortRes) % constructor function
+        function obj = Voltage(E,PortRes) % constructor function
             obj.E = E; % set the source voltage
             obj.PortRes = PortRes; % set the port resistance
             obj.WD = 0; % initial value for the incoming wave

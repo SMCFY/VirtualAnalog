@@ -14,11 +14,11 @@ f0 = 100; % excitation frequency (Hz)
 t = 0:N-1; % time vector for the excitation
 input = gain.*sin(2*pi*f0/Fs.*t); % the excitation signal
 output = zeros(1,length(input));
-V1 = V(0,1); % create a source with 0 (initial) voltage and 1 Ohm ser. res.
-R1 = R(80); % create an 80Ohm resistor
+V1 = Voltage(0,1); % create a source with 0 (initial) voltage and 1 Ohm ser. res.
+R1 = Resistor(80); % create an 80Ohm resistor
 CapVal = 3.5e-5; % the capacitance value in Farads
-C1 = C(1/(2*CapVal*Fs)); % create the capacitance
-s1 =  ser(V1,ser(C1,R1)); % create WDF tree as a ser. conn. of V1,C1, and R1
+C1 = Capacitor(1/(2*CapVal*Fs)); % create the capacitance
+s1 =  Series(V1,Series(C1,R1)); % create WDF tree as a ser. conn. of V1,C1, and R1
 Vdiode = 0; % initial value for the voltage over the diode
 
 Is = 2.52e-9;
