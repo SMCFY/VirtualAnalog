@@ -2,9 +2,10 @@ Fs = 44100; % sample rate (Hz)
 N = 20000; % number of samples to simulate
 
 t = 0:N-1; % time vector for the excitation
-gain = 30; % input signal gain parameter
-f0 = 20000; % excitation frequency (Hz)
+gain = 1; % input signal gain parameter
+f0 = 20; % excitation frequency (Hz)
 input = gain.*sin(2*pi*f0/Fs.*t); % the excitation signal
+plot(input)
 output = zeros(N,1);
 CapVal = 1e-9; % the capacitance value in Farads
 C1 = Capacitor(1/(2*CapVal*Fs));
@@ -28,6 +29,6 @@ for i=1:N
 %     end
 end
 %%
-plot(input);hold on;
-plot(output)
+%plot(input);figure;
+%plot(output)
 soundsc(output, Fs)
