@@ -21,4 +21,4 @@ for i=1:N
 end
 %% 
 plot(output)
-soundsc(output, fs)
+soundsc(output, Fs)
