@@ -1,9 +1,11 @@
 Fs = 44100; % sample rate (Hz)
 N = 2000; % number of samples to simulate
 
+
 outputR = zeros(N,1);
 outputC = zeros(N,1);
 outputL = zeros(N,1);
+
 CapVal = 100e-8; % the capacitance value in Farads
 C1 = Capacitor((1/Fs)/(2*CapVal));
 Lval = 0.15;
@@ -13,6 +15,7 @@ L1 = Inductor(2*Lval/(1/Fs));
 V1 = VoltageSource(0,1);
 R1 = Resistor(12); % create the capacitance
 s1 =  Series(L1,Series(C1,Series(V1,R1))); % create WDF tree as a ser. conn. of V1,C1, and R1
+
 %r = 1/(2*pi*sqrt(CapVal*Lval)) % resonant frequency, from wiki: https://en.wikipedia.org/wiki/LC_circuit
 % http://www.electronics-tutorials.ws/accircuits/series-circuit.html
 gain = 10; % input signal gain parameter
