@@ -7,9 +7,12 @@ classdef OnePort < WDF % superclass for all WDF one-port elements
     methods
         function setWD(obj,val) % this function sets the out-going wave
             obj.WD = val;
-            if or(strcmp(class(obj),'C'),strcmp(class(obj),'L')) % if react.
+            if or(isa(obj,'Capacitor'),isa(obj,'Inductor')) % if react.
                 obj.State = val; % update internal state
             end
+        end
+        function updatePortRes(obj, PortRes)
+            obj.PortRes = PortRes;
         end
     end
 end

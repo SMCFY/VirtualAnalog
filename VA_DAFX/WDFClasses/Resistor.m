@@ -1,7 +1,7 @@
-%----------------------R Class------------------------
-classdef R < OnePort % a (linear) WDF resistor
+%----------------------Resistor Class------------------------
+classdef Resistor < OnePort % a (linear) WDF resistor
     methods
-        function obj = R(PortRes) % constructor function
+        function obj = Resistor(PortRes) % constructor function
             obj.PortRes = PortRes; % port resistance (equal to el. res.)
         end
         function WU = WaveUp(obj) % get the up-going wave

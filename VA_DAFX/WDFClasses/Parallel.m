@@ -16,7 +16,7 @@ classdef Parallel < Adaptor % the class for parallel 3-port adaptors
         end
         function WU = WaveUp(obj) % the up-going wave at the adapted port
             % A2 is the waveup(kidleft) and A3 is the waveup(kidright)
-            WU = obj.G2/(obj.G2 + obj.G3)*WaveUp(obj.KidLeft) + obj.G3/(obj.G2+obj.G3)*WaveUp(obj.KidRight);% wave up
+            WU = (obj.G2/(obj.G2 + obj.G3))*WaveUp(obj.KidLeft) + (obj.G3/(obj.G2+obj.G3)*WaveUp(obj.KidRight));% wave up
             obj.WU = WU;
         end
         function setWD(obj,WaveFromParent) %  sets the down-going wave
@@ -31,6 +31,27 @@ classdef Parallel < Adaptor % the class for parallel 3-port adaptors
             
             setWD(obj.KidLeft, left);
             setWD(obj.KidRight, right);
+        end
+        function adapt(obj)
+            if isa(obj.KidLeft, 'ser')
+                adapt(obj.KidLeft)
+            end
+            if isa(obj.KidRight, 'ser')
+                adapt(obj.KidRight)
+            end
+            if isa(obj.KidLeft, 'Parallel')
+                adapt(obj.KidLeft)
+            end
+            if isa(obj.KidRight, 'Parallel')
+                adapt(obj.KidRight)
+            end
+            
+            if isa(obj, 'ser')
+                obj.PortRes = obj.KidLeft.PortRes+obj.KidRight.PortRes;
+            end
+            if isa(obj, 'Parallel')
+                obj.PortRes = (obj.KidLeft.PortRes * obj.KidRight.PortRes)/(obj.KidLeft.PortRes + obj.KidRight.PortRes); % obj.G2+obj.G3; % parallel adapt. port facing the root
+            end
         end
     end
 end
