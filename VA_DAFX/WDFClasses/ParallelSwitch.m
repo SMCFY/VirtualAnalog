@@ -8,39 +8,30 @@ classdef ParallelSwitch < Adaptor % the class for parallel 3-port adaptors
         state = 0;
     end
     methods
-        function obj = Parallel(KidLeft,KidRight) % constructor function
+        function obj = ParallelSwitch(KidLeft,KidRight) % constructor function
             obj.KidLeft = KidLeft; % connect the left 'child'
             obj.KidRight = KidRight; % connect the right 'child'
             obj.G2 = 1/KidLeft.PortRes; % G2 is the inverse port resistance from kidleft
             obj.G3 = 1/KidRight.PortRes; % G3 is the inverse port resistance from kidright
-            obj.PortRes = (KidLeft.PortRes * KidRight.PortRes)/(KidLeft.PortRes + KidRight.PortRes);% obj.G2+obj.G3; % parallel adapt. port facing the root
+            obj.PortRes = (KidLeft.PortRes - KidRight.PortRes)/(KidLeft.PortRes + KidRight.PortRes);% obj.G2+obj.G3; % parallel adapt. port facing the root
         end
         function WU = WaveUp(obj) % the up-going wave at the adapted port
             % A2 is the waveup(kidleft) and A3 is the waveup(kidright)
-            if obj.state == 1
-                WU = obj.G2/(obj.G2 + obj.G3)*WaveUp(obj.KidLeft) + obj.G3/(obj.G2+obj.G3)*WaveUp(obj.KidRight);% wave up
-                obj.WU = WU;
-            else
-                obj.WU = 0;
-            end
         end
-        function setWD(obj,WaveFromParent) %  sets the down-going wave
+        function cycleWave(obj,WaveFromParent) %  sets the down-going wave
             if obj.state == 1
                 obj.WD = WaveFromParent; % set the down-going wave for the adaptor
                 % set the waves to the 'children' according to the scattering rules
                 
-                lrG = obj.G2 + obj.G3;
-                lrW = WaveFromParent + obj.KidLeft.WU + obj.KidRight.WU;
-                
-                left = obj.KidLeft.WU - (obj.G2/lrG) * lrW;
-                right = obj.KidRight.WU - (obj.G3/lrG) * lrW;
-                
-                setWD(obj.KidLeft, left);
-                setWD(obj.KidRight, right);
+                a1 = WaveUp(obj.KidLeft);
+                a2 = WaveUp(obj.KidRight);
+                b1 = a2 + obj.PortRes*(a2 - a1);
+                b2 = a1 + obj.PortRes*(a2 - a1);
+                setWD(obj.KidRight,b2);
+                setWD(obj.KidLeft,b1); 
             else
-                obj.WD = 0;
-                setWD(obj.KidLeft, 0);
-                setWD(obj.KidRight,0);
+                b1 = WaveUp(obj.KidLeft);
+                setWD(obj.KidLeft, b1);
             end
         end
         function changeState(obj) % always make the state the opposite of what it was
