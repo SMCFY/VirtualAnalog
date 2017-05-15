@@ -6,9 +6,9 @@ CapVal = 3.1e-5; % the capacitance value in Farads
 C1 = Capacitor(1/(2*CapVal*Fs));
 Lval = 3.5e-5;
 L1 = Inductor(2*Lval*Fs);
-L1.State = 1;
-C1.State = 1;
-R1 = Resistor(6); % create the capacitance
+L1.State = 100;
+C1.State = 100;
+R1 = Resistor(60); % create the capacitance
 p1 =  Parallel(R1,Parallel(C1,L1)); % create WDF tree as a ser. conn. of V1,C1, and R1
 %r = 1/(2*pi*sqrt(CapVal*Lval)) % resonant frequency, from wiki: https://en.wikipedia.org/wiki/LC_circuit
 
