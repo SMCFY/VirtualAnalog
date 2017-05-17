@@ -37,10 +37,10 @@ classdef Series < Adaptor % the class for series 3-port adaptors
             %obj = ser(obj.KidLeft,obj.KidRight);
         end
         function adapt(obj)
-            if isa(obj.KidLeft, 'ser')
+            if isa(obj.KidLeft, 'Series')
                 adapt(obj.KidLeft)    
             end
-            if isa(obj.KidRight, 'ser')
+            if isa(obj.KidRight, 'Series')
                 adapt(obj.KidRight)
             end
             if isa(obj.KidLeft, 'Parallel')
@@ -50,7 +50,7 @@ classdef Series < Adaptor % the class for series 3-port adaptors
                 adapt(obj.KidRight)
             end
             
-            if isa(obj, 'ser')
+            if isa(obj, 'Series')
                 obj.PortRes = obj.KidLeft.PortRes+obj.KidRight.PortRes;
             end
             if isa(obj, 'Parallel')
