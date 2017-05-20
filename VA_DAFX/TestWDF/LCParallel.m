@@ -16,7 +16,7 @@ Lval = 1.42e-4;
 %L1 = Inductor(Fs/2*Lval)
 L1 = Inductor(Fs/2*Lval)
 
-L1.State = 100;
+L1.State = 1;
  
  
 p1 =  Parallel(C1,L1); % create WDF 

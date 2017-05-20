@@ -12,7 +12,12 @@ classdef Parallel < Adaptor % the class for parallel 3-port adaptors
             obj.KidRight = KidRight; % connect the right 'child'
             obj.G2 = 1/KidLeft.PortRes; % G2 is the inverse port resistance from kidleft
             obj.G3 = 1/KidRight.PortRes; % G3 is the inverse port resistance from kidright
-            obj.PortRes = obj.G2+obj.G3; % parallel adapt. port facing the root %(KidLeft.PortRes * KidRight.PortRes)/(KidLeft.PortRes + KidRight.PortRes);%
+            
+            % WDF++
+            % left = l; right = r;
+            % port->Rp = (left->R() * right->R())
+            %         / (left->R() + right->R());
+            obj.PortRes = (KidLeft.PortRes * KidRight.PortRes)/(KidLeft.PortRes + KidRight.PortRes); %obj.G2+obj.G3; % parallel adapt. port facing the root %
         end
         function WU = WaveUp(obj) % the up-going wave at the adapted port
             % A2 is the waveup(kidleft) and A3 is the waveup(kidright)
