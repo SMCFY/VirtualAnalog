@@ -8,7 +8,7 @@ C1 = Capacitor(1/(2*CapVal*Fs));
 
 Lval = 3.6e-5;
 L1 = Inductor(2*Lval*Fs);
-L1.State = 1;
+L1.State = 100;
 %L1.State = 1;
 %C1.State = 1;
 R1 = Resistor(2); 
