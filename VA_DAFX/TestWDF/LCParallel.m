@@ -12,11 +12,11 @@ output = zeros(N,1);
 CapVal = 3.6e-6; % the capacitance value in Farads
 C1 = Capacitor(1/(2*CapVal*Fs));
  
-Lval = 1.42e-4;
+Lval = 3.6e-2;
 %L1 = Inductor(Fs/2*Lval)
-L1 = Inductor(Fs/2*Lval)
+L1 = Inductor(2*Lval*Fs)
 
-L1.State = 1;
+L1.State = 100;
  
  
 p1 =  Parallel(C1,L1); % create WDF 
@@ -24,7 +24,7 @@ r = 1/(2*pi*sqrt(CapVal*Lval)) % resonant frequency, from wiki: https://en.wikip
   
 for i=1:N
     myB = WaveUp(p1); 
-    setWD(p1,0); % open circuit 
+    setWD(p1,myB); % open circuit 
     output(i) = getState(C1);
 end
 plot(output)
