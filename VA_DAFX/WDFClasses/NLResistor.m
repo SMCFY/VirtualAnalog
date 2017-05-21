@@ -23,7 +23,7 @@ classdef NLResistor < OnePort % a (nonlinear) WDF resistor
             WU = 0; % always zero for a linear WDF resistor
             obj.WU = WU;
         end
-        function setWD(obj, a) % get the down-going wave
+        function WD = setWD(obj, a) % get the down-going wave
             
             WD = obj.g1*a+1/2*(obj.g2-obj.g1)*(abs(a + obj.a0) - abs(a - obj.a0)); % eq. 17 DIGITAL SIMULATION OF NONLINEAR CIRCUITS BY WAVE DIGITAL FILTER PRINCIPLES, Meerkötter and Scholz
             obj.WD = WD;

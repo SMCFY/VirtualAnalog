@@ -8,7 +8,7 @@
 % for commercial applications without further permission.
 %--------------------------------------------------------------------------
 
-Fs = 20000; % sample rate (Hz)
+Fs = 40000; % sample rate (Hz)
 N = Fs/10; % number of samples to simulate
 gain = 30; % input signal gain parameter
 f0 = 100; % excitation frequency (Hz)
