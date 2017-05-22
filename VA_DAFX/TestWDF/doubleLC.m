@@ -18,9 +18,6 @@
 
 Fs = 44100; % sample rate (Hz)
 N = 20000; % number of samples to simulate
-
-Fs = 44100; % sample rate (Hz)
-N = 20000; % number of samples to simulate
  
 output = zeros(N,1);
  
