@@ -1,7 +1,7 @@
 clear; clc
 % C4 and L in parallel --> Series(P, R1) --> Parallel(S1, C2) --> Nonlinear Resistor
-us = 10e-5;
-fs = 1/us;
+
+fs = 44100;
 len = 20000; % length in samples
 
 C4val = 49e-5;
