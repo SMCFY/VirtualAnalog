@@ -1,5 +1,5 @@
 
-Fs = 48000*8; % sample rate (Hz)
+Fs = 48000; % sample rate (Hz)
 N = 16000; % number of samples to simulate
 gain = 4.5; % input signal gain parameter
 f0 = 80; % excitation frequency (Hz)
@@ -60,7 +60,7 @@ for n = 1:N % run each time sample until N
 end
 %% Plot the results
 t = (1:length(input))./Fs; % create a time vector for the figure
-%hi = plot(t,input,'--'); hold on; % plot the input signal, keep figure open
+hi = plot(t,input,'--'); hold on; % plot the input signal, keep figure open
 ho = plot(t,output);  % plot output signal, prevent further plots
 grid on; % use the grid for clarity
 xlabel('Time (s)'); ylabel('Voltage (V)'); % insert x- and y-axis labels
