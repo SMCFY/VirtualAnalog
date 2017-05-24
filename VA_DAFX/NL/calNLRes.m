@@ -3,7 +3,6 @@ function [ b ] = calNLRes( a )
       G2 = -0.0008; % -800uS
       v0 = 1;       % 1V
       R = 569.2;    % Resistance, can maybe work as PortRes;
-     
       g1 = (1-G1*R)/(1+G1*R);
       g2 = (1-G2*R)/(1+G2*R);
       a0 = v0 * (1+G2*R);

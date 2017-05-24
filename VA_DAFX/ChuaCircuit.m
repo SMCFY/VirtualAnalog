@@ -46,4 +46,7 @@ for i=1:len
 end
 %%
 plot(output2, output)
+xlabel('Voltage over C1')
+ylabel('Voltage over C2')
+title('Chua Circuit', 'FontSize', 18 )
 %soundsc(output,fs)
