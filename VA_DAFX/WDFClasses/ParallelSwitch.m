@@ -1,3 +1,4 @@
+% not working yet
 %----------------------Parallel Switch Class------------------------
 classdef ParallelSwitch < Adaptor % the class for parallel 3-port adaptors
     properties

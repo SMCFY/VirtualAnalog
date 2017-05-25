@@ -1,5 +1,5 @@
-%----------------------V Class------------------------
-classdef CurrentSourceIs < OnePort % class for the WDF voltage source (and ser. res.)
+%---------------------- Current Source Class ------------------------
+classdef CurrentSourceIs < OnePort % class for the WDF current source 
     properties
         Is % this is the source current
     end

@@ -1,3 +1,4 @@
+% not working yet
 %----------------------Two port Parallel Switch Class------------------------
 classdef TwoPortParallel < Adaptor % the class for parallel 3-port adaptors
     properties

@@ -1,4 +1,4 @@
-%----------------------Capacitor Class------------------------
+%---------------------- Capacitor Class ------------------------
 classdef Capacitor < OnePort
     properties
         State % this is the one-sample internal memory of the WDF capacitor
