@@ -1,11 +1,11 @@
-%----------------------TerminatedB------------------------
-classdef TerminatedVsource < OnePort % class for the WDF voltage source (and ser. res.)
+%----------------------Terminated Voltage Source ------------------------
+classdef TerminatedVs < OnePort % class for the WDF terminated voltage source (and ser. res.)
     properties
     E
     end
     methods
-        function obj = TerminatedVsource(E,PortRes) % constructor function
-            obj.E = E;              % set the source voltage
+        function obj = TerminatedVs(E,PortRes) % constructor function
+            obj.E = E;             % set the source voltage
             obj.PortRes = PortRes; % set the port resistance
             obj.WD = 0; % initial value for the incoming wave
         end
