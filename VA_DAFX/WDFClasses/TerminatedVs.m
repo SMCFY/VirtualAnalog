@@ -1,7 +1,7 @@
 %----------------------Terminated Voltage Source ------------------------
 classdef TerminatedVs < OnePort % class for the WDF terminated voltage source (and ser. res.)
     properties
-    E
+        E
     end
     methods
         function obj = TerminatedVs(E,PortRes) % constructor function
