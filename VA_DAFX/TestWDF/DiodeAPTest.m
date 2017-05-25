@@ -1,4 +1,6 @@
-
+clear; clc;
+% Anti Parallel Diode Circuit 
+% As described in 
 Fs = 48000; % sample rate (Hz)
 N = 16000; % number of samples to simulate
 gain = 4.5; % input signal gain parameter
@@ -9,7 +11,7 @@ input = gain.*sin(2*pi*f0/Fs.*t); % the excitation signal
 output = zeros(1,length(input));
 
 % Device parameters for the following simulations are
-% Rs = 2.2k?, Ch = 0.47?F, Cl = 0.01?F, Is = 2.52 × 10?9 A, and Vt = 45.3mV.
+% Rs = 2.2kOhm, Ch = 0.47uF, Cl = 0.01uF, Is = 2.52 × 10-9 A, and Vt = 45.3mV.
 
 V1 = VoltageSource(0, 2200);
 
@@ -36,26 +38,23 @@ b2 = [];
 b = 0; %initial guess
 %% The simulation loop:
 for n = 1:N % run each time sample until N
-    %n
     V1.E = input(n); % read the input signal for the voltage source
     a = WaveUp(A2); % get the waves up to the root
 
     iter = 1;
-    %b = 0;
     while (abs(err) / abs(b) > epsilon )
         f = 2*Is*sinh((a + b)/(2*Vt)) - (a - b)/(2*Rp);
         df = 2*Is*sinh((a + (b+dx))/(2*Vt)) - (a-(b+dx))/(2*Rp);
         newB = b - (dx*f)/(df - f);
         b = newB;
+        iter = iter + 1;
         if (iter > maxIter)
             %iter
             break;
-        end
-        iter = iter + 1;
+        end       
     end
     b2(n) = b;
     setWD(A2, b); % evaluate the wave leaving the diode (root element)
-    %Vdiode = (s1.WD+s1.WU)/2; % update the diode voltage for next time sample
     output(n) = Voltage(A2); % the output is the voltage over the resistor R1
 end
 %% Plot the results
