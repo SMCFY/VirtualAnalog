@@ -1,4 +1,4 @@
-%----------------------Non linear Resistor Class------------------------
+%----------------------Nonlinear Chua Resistor Class------------------------
 classdef NLResistor < OnePort % a (nonlinear) WDF resistor
     properties
         G1 = -0.0005; % -500uS
@@ -19,12 +19,10 @@ classdef NLResistor < OnePort % a (nonlinear) WDF resistor
             obj.a0 = obj.v0 * (1+obj.G2*R);
         end
         function WU = WaveUp(obj) % get the up-going wave
-            
             WU = 0; % always zero for a linear WDF resistor
             obj.WU = WU;
         end
-        function WD = setWD(obj, a) % get the down-going wave
-            
+        function WD = WaveDown(obj, a) % get the down-going wave
             WD = obj.g1*a+1/2*(obj.g2-obj.g1)*(abs(a + obj.a0) - abs(a - obj.a0)); % eq. 17 DIGITAL SIMULATION OF NONLINEAR CIRCUITS BY WAVE DIGITAL FILTER PRINCIPLES, Meerkötter and Scholz
             obj.WD = WD;
         end
