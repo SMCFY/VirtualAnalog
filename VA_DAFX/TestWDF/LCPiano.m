@@ -28,7 +28,7 @@ A2 = Series(A1,R);
   
 for i=1:N
     myB = WaveUp(A2); 
-    setWD(A2,-myB); % open circuit 
+    WaveDown(A2,-myB); % open circuit 
     output(i) = Voltage(C1);
 end
 plot(output)

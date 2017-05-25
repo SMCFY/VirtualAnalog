@@ -1,4 +1,4 @@
-function [ b ] = calNLRes( a )
+function [ b ] = ChuaResistor( a )
       G1 = -0.0005; % -500uS
       G2 = -0.0008; % -800uS
       v0 = 1;       % 1V
@@ -8,7 +8,5 @@ function [ b ] = calNLRes( a )
       a0 = v0 * (1+G2*R);
     
       b = g1*a+1/2*(g2-g1)*(abs(a + a0) - abs(a - a0)); % eq. 17 DIGITAL SIMULATION OF NONLINEAR CIRCUITS BY WAVE DIGITAL FILTER PRINCIPLES, Meerkötter and Scholz
-    
-
 end
 

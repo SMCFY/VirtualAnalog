@@ -21,7 +21,7 @@ input = gain.*sin(2*pi*f0/Fs.*t); % the excitation signal
 
 for i=1:N
     WaveUp(s1); % get the waves up to the root
-    setWD(s1,input(i)); % open circuit structure b = 0?
+    WaveDown(s1,input(i)); % open circuit structure b = 0?
     output(i) = getState(C1);
 %     if rand(1) < 0.5
 %         L1.State = L1.State + 0.1;

@@ -29,7 +29,7 @@ A3 = Parallel(Lm,A2);
 
 for i=1:N
     myB = WaveUp(A3); 
-    setWD(A3,myB); % open circuit 
+    WaveDown(A3,myB); % open circuit 
     output(i) = getState(Ct);
 end
 

@@ -43,7 +43,7 @@ s1 = Series(p1,p2);
   
 for i=1:N
     myB = WaveUp(s1); 
-    setWD(s1,myB); % open circuit 
+    WaveDown(s1,myB); % open circuit 
     output(i) = Voltage(p1) +  Voltage(p2);
 end
 plot(output)

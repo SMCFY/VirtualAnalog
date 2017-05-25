@@ -54,7 +54,7 @@ A8 = Parallel(A7, Cf);
 
 for i=1:N
     myB = WaveUp(A8); 
-    setWD(A8,myB); % open circuit 
+    WaveDown(A8,myB); % open circuit 
     output(i) = Voltage(A6);
 end
 plot(output)

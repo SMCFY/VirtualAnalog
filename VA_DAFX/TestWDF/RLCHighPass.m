@@ -20,7 +20,7 @@ s1 =  Series(C1,Parallel(L1,R1)); % create WDF tree as a ser. conn. of V1,C1, an
 
 for i=1:N
    b = WaveUp(s1); % get the waves up to the root
-    setWD(s1,-b); 
+    WaveDown(s1,-b); 
     output(i) = getState(C1);
 end
 %% 

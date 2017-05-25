@@ -60,7 +60,7 @@ for n = 1:N % run each time sample until N
         end       
     end
     b2(n) = b;
-    setWD(A2, b);            % evaluate the wave leaving the diode (root element)
+    WaveDown(A2, b);            % evaluate the wave leaving the diode (root element)
     output(n) = Voltage(A2); % the output is the voltage over the parallel adaptor A2
 end
 %% Plot the results
@@ -70,3 +70,4 @@ ho = plot(t,output);  % plot output signal, prevent further plots
 grid on; % use the grid for clarity
 xlabel('Time (s)'); ylabel('Voltage (V)'); % insert x- and y-axis labels
 %legend([hi ho],'Source voltage E','Voltage over R1'); % insert legend
+title('Two-Capacitor Diode Clipper','FontSize',18)

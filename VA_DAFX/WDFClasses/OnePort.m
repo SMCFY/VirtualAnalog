@@ -5,14 +5,11 @@ classdef OnePort < WDF % superclass for all WDF one-port elements
         WU = 0;  % the out-going wave from the one-port element
     end
     methods
-        function setWD(obj,val) % this function sets the out-going wave
+        function WaveDown(obj,val) % this function sets the out-going wave
             obj.WD = val;
             if or(isa(obj,'Capacitor'),isa(obj,'Inductor')) % if react.
                 obj.State = val; % update internal state
             end
-        end
-        function updatePortRes(obj, PortRes)
-            obj.PortRes = PortRes;
         end
     end
 end

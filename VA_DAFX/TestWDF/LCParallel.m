@@ -24,7 +24,7 @@ r = 1/(2*pi*sqrt(CapVal*Lval)) % resonant frequency, from wiki: https://en.wikip
   
 for i=1:N
     myB = WaveUp(p1); 
-    setWD(p1,myB); % open circuit 
+    WaveDown(p1,myB); % open circuit 
     output(i) = getState(C1);
 end
 plot(output)

@@ -14,7 +14,7 @@ classdef Series < Adaptor % the class for series 3-port adaptors
             WU = -(WaveUp(obj.KidLeft)+WaveUp(obj.KidRight)); % wave up
             obj.WU = WU;
         end
-        function setWD(obj,WaveFromParent) %  sets the down-going wave
+        function WaveDown(obj,WaveFromParent) %  sets the down-going wave
             obj.WD = WaveFromParent; % set the down-going wave for the adaptor
             % set the waves to the 'children' according to the scattering rules
             
@@ -24,38 +24,8 @@ classdef Series < Adaptor % the class for series 3-port adaptors
             right = obj.KidRight.WU-(obj.KidRight.PortRes/...
                 obj.PortRes)*(WaveFromParent+obj.KidLeft.WU+obj.KidRight.WU);
             
-            setWD(obj.KidLeft,left);
-            setWD(obj.KidRight,right);
-        end
-        function updatePortRes(obj, PortRes, side)
-            if side == 'l'
-                updatePortRes(obj.KidLeft, PortRes); 
-            end
-            if side == 'r'
-                obj.KidRight.updatePortRes(PortRes); 
-            end
-            %obj = ser(obj.KidLeft,obj.KidRight);
-        end
-        function adapt(obj)
-            if isa(obj.KidLeft, 'Series')
-                adapt(obj.KidLeft)    
-            end
-            if isa(obj.KidRight, 'Series')
-                adapt(obj.KidRight)
-            end
-            if isa(obj.KidLeft, 'Parallel')
-                adapt(obj.KidLeft)
-            end
-            if isa(obj.KidRight, 'Parallel')
-                adapt(obj.KidRight)
-            end
-            
-            if isa(obj, 'Series')
-                obj.PortRes = obj.KidLeft.PortRes+obj.KidRight.PortRes;
-            end
-            if isa(obj, 'Parallel')
-                obj.PortRes = (obj.KidLeft.PortRes * obj.KidRight.PortRes)/(obj.KidLeft.PortRes + obj.KidRight.PortRes); % obj.G2+obj.G3; % parallel adapt. port facing the root
-            end
+            WaveDown(obj.KidLeft,left);
+            WaveDown(obj.KidRight,right);
         end
     end
 end

@@ -46,7 +46,7 @@ for i=1:N
     
     WaveUp(s1); % get the waves up to the root
 
-    setWD(s1,0); % open circuit structure b = 0?
+    WaveDown(s1,0); % open circuit structure b = 0?
     outputC(i) = Voltage(C1);
     outputL(i) = Voltage(L1);
     outputR(i) = Voltage(R1);

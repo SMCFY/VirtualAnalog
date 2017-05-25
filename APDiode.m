@@ -81,7 +81,7 @@ classdef APDiode < audioPlugin
                 obj.V1.E = input(n); % read the input signal for the voltage source
                 a = WaveUp(obj.A2); 
                 solveNL(obj, a);
-                setWD(obj.A2, obj.b); % evaluate the wave leaving the diode (root element)
+                WaveDown(obj.A2, obj.b); % evaluate the wave leaving the diode (root element)
                 output(n) = Voltage(obj.A2);
             end
             out = output*obj.mix + (1-obj.mix)*x;

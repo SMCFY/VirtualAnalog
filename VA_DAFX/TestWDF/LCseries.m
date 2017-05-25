@@ -18,7 +18,7 @@ r = 1/(2*pi*sqrt(CapVal*Lval)) % resonant frequency, from wiki: https://en.wikip
 
 for i=1:N
     WU = WaveUp(s1); % get the waves up to the root
-    setWD(s1,-WU); % open circuit structure b = 0?
+    WaveDown(s1,-WU); % open circuit structure b = 0?
     output(i) = getState(C1);
 
 end

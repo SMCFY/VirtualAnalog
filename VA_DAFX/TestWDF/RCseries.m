@@ -17,7 +17,7 @@ s1 =  Series(C1,R1); % create WDF tree as a ser. conn. of V1,C1, and R1
 
 for i=1:N
     WaveUp(s1); % get the waves up to the root
-    setWD(s1,0); % open circuit structure b = 0?
+    WaveDown(s1,0); % open circuit structure b = 0?
     output(i) = Voltage(R1);
 %     if rand(1) < 0.5
 %         L1.State = L1.State + 0.1;

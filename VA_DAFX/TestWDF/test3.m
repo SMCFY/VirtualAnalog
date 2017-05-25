@@ -50,7 +50,7 @@ for n = 1:N % run each time sample until N
         iter = iter + 1;
     end
     b2(n) = b;
-    setWD(s1, b); % evaluate the wave leaving the diode (root element)
+    WaveDown(s1, b); % evaluate the wave leaving the diode (root element)
     Vdiode = (s1.WD+s1.WU)/2; % update the diode voltage for next time sample
     output(n) = Voltage(R1); % the output is the voltage over the resistor R1
 end; 

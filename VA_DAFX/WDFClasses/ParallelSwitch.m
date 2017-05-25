@@ -27,11 +27,11 @@ classdef ParallelSwitch < Adaptor % the class for parallel 3-port adaptors
                 a2 = WaveUp(obj.KidRight);
                 b1 = a2 + obj.PortRes*(a2 - a1);
                 b2 = a1 + obj.PortRes*(a2 - a1);
-                setWD(obj.KidRight,b2);
-                setWD(obj.KidLeft,b1); 
+                WaveDown(obj.KidRight,b2);
+                WaveDown(obj.KidLeft,b1); 
             else
                 b1 = WaveUp(obj.KidLeft);
-                setWD(obj.KidLeft, b1);
+                WaveDown(obj.KidLeft, b1);
             end
         end
         function changeState(obj) % always make the state the opposite of what it was

@@ -29,7 +29,7 @@ P2 = Parallel(S1, C1);
 
 for i=1:len
     a = WaveUp(P2);           % get the waves up to the root
-    setWD(P2, calNLRes(a));   % Send the NL in the resistor down the tree
+    WaveDown(P2, ChuaResistor(a));   % Send the NL in the resistor down the tree
     output(i) = getState(C2); % Get the state at component C2
     output2(i) = getState(C1);% Get the state at component C1
 end
