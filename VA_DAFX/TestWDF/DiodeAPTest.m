@@ -1,12 +1,12 @@
 clear; clc;
 % Anti Parallel Diode Circuit 
 % As described in 
-Fs = 48000; % sample rate (Hz)
+Fs = 48000*8; % sample rate (Hz)
 N = 16000; % number of samples to simulate
 gain = 4.5; % input signal gain parameter
 f0 = 80; % excitation frequency (Hz)
-t = 0:N-1; % time vector for the excitation
-input = gain.*sin(2*pi*f0/Fs.*t); % the excitation signal
+t = 2500:N-1; % time vector for the excitation
+input = [zeros(1,2500),gain.*sin(2*pi*f0/Fs.*t)]; % the excitation signal
 
 output = zeros(1,length(input));
 
