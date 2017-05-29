@@ -35,6 +35,6 @@ for i=1:len
 end
 %%
 plot(output2, output)
-xlabel('Voltage over C1')
-ylabel('Voltage over C2')
+xlabel('Voltage over C1', 'FontSize', 14)
+ylabel('Voltage over C2',  'FontSize', 14)
 title('Chua Circuit', 'FontSize', 18 )

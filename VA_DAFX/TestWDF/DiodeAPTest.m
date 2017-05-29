@@ -68,6 +68,6 @@ t = (1:length(input))./Fs; % create a time vector for the figure
 %hi = plot(t,input,'--'); hold on; % plot the input signal, keep figure open
 ho = plot(t,output);  % plot output signal, prevent further plots
 grid on; % use the grid for clarity
-xlabel('Time (s)'); ylabel('Voltage (V)'); % insert x- and y-axis labels
+xlabel('Time (s)', 'FontSize', 14); ylabel('Voltage (V)', 'FontSize', 14); % insert x- and y-axis labels
 %legend([hi ho],'Source voltage E','Voltage over R1'); % insert legend
 title('Two-Capacitor Diode Clipper','FontSize',18)

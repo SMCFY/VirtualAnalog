@@ -3,18 +3,15 @@
 
 Fs = 44100; % sample rate (Hz)
 N = 20000; % number of samples to simulate
-
-Fs = 44100; % sample rate (Hz)
-N = 20000; % number of samples to simulate
  
 output = zeros(N,1);
  
-CapVal = 3.6e-6; % the capacitance value in Farads
+CapVal = 3.6e-4; % the capacitance value in Farads
 C1 = Capacitor(1/(2*CapVal*Fs));
  
-Lval = 3.6e-2;
+Lval = 3.6e-4;
 %L1 = Inductor(Fs/2*Lval)
-L1 = Inductor(2*Lval*Fs)
+L1 = Inductor(Fs/2*Lval)
 
 L1.State = 100;
  
