@@ -24,19 +24,19 @@ classdef Parallel < Adaptor % the class for parallel 3-port adaptors
             % Scattering method from BCT
             obj.a1 = WaveUp(obj.KidLeft);
             obj.a2 = WaveUp(obj.KidRight);
-            obj.pb2 = obj.gamma * (obj.a1 - obj.a2);
-            WU = obj.pb2 + obj.a2;
+            obj.pb2 = obj.gamma * (obj.a1 - obj.a2); % 36a fettweis
+            WU = obj.pb2 + obj.a2;  % 36b fettweis
             obj.WU = WU;
         end
         function WaveDown(obj,WaveFromParent) %  sets the down-going wave
             obj.WD = WaveFromParent; % set the down-going wave for the adaptor
            
-            % Scattering method from BCT   
-            b3 = obj.pb2 + obj.a2; 
+            % Scattering according to fettweis theory and practice 
+            b3 = obj.pb2 + obj.a2; % 36b fettweis
             a3 = WaveFromParent;
 
-            left = b3 - obj.a1 + a3;
-            right = obj.pb2 + a3;
+            left = b3 - obj.a1 + a3; % 32b fettweis
+            right = obj.pb2 + a3; % 36b fettweis
 
             WaveDown(obj.KidLeft, left);
             WaveDown(obj.KidRight, right);

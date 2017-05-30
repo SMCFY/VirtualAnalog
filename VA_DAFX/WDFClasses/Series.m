@@ -11,16 +11,16 @@ classdef Series < Adaptor % the class for series 3-port adaptors
             obj.PortRes = KidLeft.PortRes+KidRight.PortRes; % adapt. port
         end
         function WU = WaveUp(obj) % the up-going wave at the adapted port
-            WU = -(WaveUp(obj.KidLeft)+WaveUp(obj.KidRight)); % wave up
+            WU = -(WaveUp(obj.KidLeft)+WaveUp(obj.KidRight)); % 43a fettweis
             obj.WU = WU;
         end
         function WaveDown(obj,WaveFromParent) %  sets the down-going wave
             obj.WD = WaveFromParent; % set the down-going wave for the adaptor
             % set the waves to the 'children' according to the scattering rules
-            
+            % 40a and 40b fettweis
             left = obj.KidLeft.WU-(obj.KidLeft.PortRes/...
                 obj.PortRes)*(WaveFromParent+obj.KidLeft.WU+obj.KidRight.WU);
-            
+            % 40a and 40b fettweis
             right = obj.KidRight.WU-(obj.KidRight.PortRes/...
                 obj.PortRes)*(WaveFromParent+obj.KidLeft.WU+obj.KidRight.WU);
             
