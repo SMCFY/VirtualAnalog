@@ -11,14 +11,16 @@ C1 = Capacitor(1/(2*CapVal*Fs));
 
 Lval = 3.6e-4;
 L1 = Inductor(Fs/2*Lval);
-L1.State = 100;
+L1.State = 1;
 
 s1 =  Series(C1,L1); % create WDF tree as a ser. conn. of V1,C1, and R1
 r = 1/(2*pi*sqrt(CapVal*Lval)) % resonant frequency, from wiki: https://en.wikipedia.org/wiki/LC_circuit
 
 for i=1:N
     WU = WaveUp(s1); % get the waves up to the root
-    WaveDown(s1,-WU); % short circuit structure b = 0?
+
+    WaveDown(s1,-WU); % short circuit, b[n] = -a[n]
+
     output(i) = getState(C1);
 end
 %% 
