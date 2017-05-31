@@ -35,19 +35,19 @@ L2a = Inductor(2*39.789e-3*Fs);
 A1 = Series(C2a, L2a);
 
 C1 = Capacitor(1/(2*19.894e-6*Fs));
-L1 = Inductor(2*6.5768e-3*Fs);
+L1 = Inductor(Fs/2*6.5768e-3);
 L1.State = 100;
 A2 = Parallel(C1, L1);
 
 C2b	= Capacitor(1/(2*3.2884e-6*Fs));
-L2b	= Inductor(2*39.789e-3*Fs);
+L2b	= Inductor(Fs/2*39.789e-3);
 A3 = Series(C2b, L2b);
 
 A4 = Parallel(V1, A1);
 A5 = Series(A4, A2);
 A6 = Parallel(A5, A3);
 
-Lf = Inductor(2*3.6e-3*Fs);
+Lf = Inductor(Fs/2*3.6e-3);
 Cf = Capacitor(1/(2*3.6e-4*Fs));
 A7 = Series(A6,	Lf);
 A8 = Parallel(A7, Cf);

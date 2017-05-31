@@ -16,9 +16,8 @@ output = zeros(N,1);
 CapVal1 = 1.6e-4; % the capacitance value in Farads
 C1 = Capacitor(1/(2*CapVal1*Fs));
 Lval1 = 3.6e-4;
-L1 = Inductor(2*Lval1*Fs)
+L1 = Inductor(Fs/2*Lval1);
 L1.State = 100;
- 
  
 A1 =  Series(C1,L1); % create WDF 
 
@@ -28,7 +27,7 @@ A2 = Series(A1,R);
   
 for i=1:N
     myB = WaveUp(A2); 
-    WaveDown(A2,-myB); % open circuit 
+    WaveDown(A2,-myB); % short circuit 
     output(i) = Voltage(C1);
 end
 plot(output)

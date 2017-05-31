@@ -1,6 +1,7 @@
 clear; clc;
 % Anti Parallel Diode Circuit 
-% As described in 
+% As described in SIMULATING GUITAR DISTORTION CIRCUITS USING WAVE DIGITAL
+% AND NONLINEAR STATE-SPACE FORMULATIONS by David Yeh and Julius Smith. 
 Fs = 48000*8; % sample rate (Hz)
 N = 16000; % number of samples to simulate
 gain = 4.5; % input signal gain parameter

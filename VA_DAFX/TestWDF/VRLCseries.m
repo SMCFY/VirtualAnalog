@@ -4,7 +4,7 @@ N = 2000; % number of samples to simulate
 
 output = zeros(N,1);
 InVal = 20e-3; % The value of the inductor in henri
-L1 = Inductor(2*InVal*Fs);
+L1 = Inductor(Fs/2*InVal);
 
 V1 = VoltageSource(0,1);
 R1 = Resistor(30); % create the capacitance
