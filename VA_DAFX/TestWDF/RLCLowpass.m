@@ -56,11 +56,11 @@ for i=1:N
 end
 
 %% 
-%plot(outputC,'b')
+plot(outputC,'b')
 hold on; 
 
-plot(outputL,'y')
-plot(outputR,'r')
+%plot(outputL,'y')
+%plot(outputR,'r')
 %plot(input(1:N),'k')
 %soundsc(output, Fs)
 %soundsc(input(1:N,1),Fs)

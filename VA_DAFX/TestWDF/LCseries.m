@@ -2,7 +2,7 @@
 % of the inductor.
 
 Fs = 44100; % sample rate (Hz)
-N = Fs; % number of samples to simulate
+N = 20000; % number of samples to simulate
 
 output = zeros(N,1);
 
@@ -18,10 +18,14 @@ r = 1/(2*pi*sqrt(CapVal*Lval)) % resonant frequency, from wiki: https://en.wikip
 
 for i=1:N
     WU = WaveUp(s1); % get the waves up to the root
-    WaveDown(s1,-WU); % short circuit, b[n] = -a[n]
-    output(i) = getState(C1);
 
+    WaveDown(s1,-WU); % short circuit, b[n] = -a[n]
+
+    output(i) = getState(C1);
 end
 %% 
-plot(output)
+plot(output);
+xlabel('Time [samples]','FontSize', 14)
+ylabel('C1 State',  'FontSize', 14)
+title('LC series', 'FontSize', 18 )
 %soundsc(output, Fs)
